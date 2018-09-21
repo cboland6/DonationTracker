@@ -6,22 +6,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login_screen);
 
-        configureNextButton();
+        goBackToWelcome();
     }
 
-    private void configureNextButton() {
-        Button nextButton = (Button) findViewById(R.id.log1);
-        nextButton.setOnClickListener(new View.OnClickListener() {
+    private void goBackToWelcome() {
+        Button backButton = (Button) findViewById(R.id.cancelbutton);
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, LoginScreen.class));
+                startActivity(new Intent(LoginScreen.this, MainActivity.class));
             }
         });
     }

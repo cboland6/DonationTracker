@@ -28,7 +28,7 @@ public class LoginScreen extends AppCompatActivity {
 
 
     public void login(View view) {
-        if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
+        if (username.getText().toString().equals("user") && password.getText().toString().equals("pass")) {
             startActivity(new Intent(LoginScreen.this, HomeScreen.class));
         } else {
             //TODO: display login failure message here

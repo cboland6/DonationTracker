@@ -32,6 +32,7 @@ public class LoginScreen extends AppCompatActivity {
             startActivity(new Intent(LoginScreen.this, HomeScreen.class));
         } else {
             //TODO: display login failure message here
+            
         }
     }
 

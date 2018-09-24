@@ -19,13 +19,11 @@ public class LoginScreen extends AppCompatActivity {
         setContentView(R.layout.activity_login_screen);
 
         // Grab widgets
-        username = (EditText)findViewById(R.id.editText);
-        password = (EditText)findViewById(R.id.editText2);
+        username = (EditText)findViewById(R.id.usernameHere);
+        password = (EditText)findViewById(R.id.passwordHere);
 
 
     }
-
-
 
     public void login(View view) {
         if (username.getText().toString().equals("user") && password.getText().toString().equals("pass")) {

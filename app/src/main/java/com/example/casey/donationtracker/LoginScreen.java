@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginScreen extends AppCompatActivity {
 
@@ -29,7 +30,8 @@ public class LoginScreen extends AppCompatActivity {
         if (username.getText().toString().equals("user") && password.getText().toString().equals("pass")) {
             startActivity(new Intent(LoginScreen.this, HomeScreen.class));
         } else {
-            //TODO: display login failure message here
+            Toast toast = Toast.makeText(getApplicationContext(), "Username or password incorrect.", Toast.LENGTH_LONG);
+            toast.show();
         }
     }
 

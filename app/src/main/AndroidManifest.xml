@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginScreen" />
+        <activity android:name=".LoginWithError" />
         <activity android:name=".HomeScreen"></activity>
     </application>
 

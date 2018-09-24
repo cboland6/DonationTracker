@@ -4,14 +4,16 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class LoginScreen extends AppCompatActivity {
 
     // Widgets
     EditText username;
     EditText password;
+    Button login;
+    Button cancel;
 
 
     @Override
@@ -20,22 +22,24 @@ public class LoginScreen extends AppCompatActivity {
         setContentView(R.layout.activity_login_screen);
 
         // Grab widgets
-        username = (EditText)findViewById(R.id.usernameHere);
-        password = (EditText)findViewById(R.id.passwordHere);
-
+        username = (EditText)findViewById(R.id.editText);
+        password = (EditText)findViewById(R.id.editText2);
+        login = (Button)findViewById(R.id.log2);
+        cancel = (Button)findViewById(R.id.cancelbutton);
 
     }
 
     public void login(View view) {
         if (username.getText().toString().equals("user") && password.getText().toString().equals("pass")) {
             startActivity(new Intent(LoginScreen.this, HomeScreen.class));
-        } else {
-            Toast toast = Toast.makeText(getApplicationContext(), "Username or password incorrect.", Toast.LENGTH_LONG);
-            toast.show();
+        }
+        else {
+            startActivity(new Intent(LoginScreen.this, LoginFail.class));
         }
     }
 
     public void onCancelPressed(View view) {
+        startActivity(new Intent(LoginScreen.this, MainActivity.class));
         finish();
     }
 

@@ -13,15 +13,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        configureNextButton();
+        configureLoginButton();
+        configureRegButton();
     }
 
-    private void configureNextButton() {
+    private void configureLoginButton() {
         Button nextButton = (Button) findViewById(R.id.log1);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, LoginScreen.class));
+            }
+        });
+    }
+
+    private void configureRegButton() {
+        Button regButton = (Button) findViewById(R.id.regbutton);
+        regButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, RegScreen.class));
             }
         });
     }

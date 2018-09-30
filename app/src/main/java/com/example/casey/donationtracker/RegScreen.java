@@ -18,15 +18,16 @@ public class RegScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg_screen);
 
+
+        //populates the spinner with options in activity_reg_screen
         String[] spinnerOptions = new String[] {
                 "User", "Admin"
         };
+        // more options can be added later ^
         Spinner s = (Spinner) findViewById(R.id.chooseUserType);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, spinnerOptions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
-
-    // grab widgets
     }
 
     //need register method here

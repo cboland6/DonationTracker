@@ -1,4 +1,4 @@
-package com.example.casey.donationtracker;
+package com.example.casey.donationtracker.Controllers;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import com.example.casey.donationtracker.R;
 
 public class RegScreen extends AppCompatActivity {
 

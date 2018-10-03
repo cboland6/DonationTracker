@@ -2,6 +2,7 @@ package com.example.casey.donationtracker.Controllers;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -37,6 +38,27 @@ public class RegScreen extends AppCompatActivity {
         roleSpinner.setAdapter(roleAdapter);
     }
 
+
+    // Error message for username
+    public void usernameDialog() {
+        AlertDialog.Builder userBuilder = new AlertDialog.Builder(RegScreen.this);
+        View userView = getLayoutInflater().inflate(R.layout.dialog_user, null);
+        TextView mUserText = (TextView) userView.findViewById(R.id.userText);
+
+        userBuilder.setView(userView);
+        userBuilder.create().show();
+    }
+
+    // Error message for password
+    public void passwordDialog() {
+        AlertDialog.Builder passBuilder = new AlertDialog.Builder(RegScreen.this);
+        View passView = getLayoutInflater().inflate(R.layout.dialog_pass, null);
+        TextView mPassText = (TextView) passView.findViewById(R.id.passText);
+
+        passBuilder.setView(passView);
+        passBuilder.create().show();
+    }
+
     //need register method here
     public void onRegisterPressed(View view) {
         Model model = Model.getInstance();
@@ -44,8 +66,17 @@ public class RegScreen extends AppCompatActivity {
         String password = passwordField.getText().toString();
         AccountRole accountRole = (AccountRole) roleSpinner.getSelectedItem();
 
-        Account newAccount = new Account(username, password, accountRole);
-        model.addAccount(newAccount);
+        // if statements make sure that a username and password is input
+        if(usernameField.getText().length() <= 0)
+            usernameDialog();
+
+        else if(passwordField.getText().length() <= 0)
+            passwordDialog();
+
+        else {
+            Account newAccount = new Account(username, password, accountRole);
+            model.addAccount(newAccount);
+        }
 
         finish();
     }

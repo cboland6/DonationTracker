@@ -8,14 +8,15 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.casey.donationtracker.R;
+import com.example.casey.donationtracker.Model.Model;
 
 public class LoginScreen extends AppCompatActivity {
 
     // Widgets
-    EditText username;
-    EditText password;
-    Button login;
-    Button cancel;
+    EditText usernameField;
+    EditText passwordField;
+    Button loginButton;
+    Button cancelButton;
 
 
     @Override
@@ -24,20 +25,28 @@ public class LoginScreen extends AppCompatActivity {
         setContentView(R.layout.activity_login_screen);
 
         // Grab widgets
-        username = (EditText)findViewById(R.id.editText);
-        password = (EditText)findViewById(R.id.editText2);
-        login = (Button)findViewById(R.id.log2);
-        cancel = (Button)findViewById(R.id.cancelbutton);
+        usernameField = (EditText)findViewById(R.id.editText);
+        passwordField = (EditText)findViewById(R.id.editText2);
+        loginButton = (Button)findViewById(R.id.log2);
+        cancelButton = (Button)findViewById(R.id.cancelbutton);
 
     }
 
     public void login(View view) {
-        if (username.getText().toString().equals("user") && password.getText().toString().equals("pass")) {
+        Model model = Model.getInstance();
+
+        String username = usernameField.getText().toString();
+        String password = passwordField.getText().toString();
+
+        boolean isLoggedIn = model.login(username, password);
+
+        if (isLoggedIn) {
             startActivity(new Intent(LoginScreen.this, HomeScreen.class));
-        }
-        else {
+        } else {
+            // invalid username or password
             startActivity(new Intent(LoginScreen.this, LoginFail.class));
         }
+
     }
 
     public void onCancelPressed(View view) {

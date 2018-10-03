@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -67,18 +68,17 @@ public class RegScreen extends AppCompatActivity {
         AccountRole accountRole = (AccountRole) roleSpinner.getSelectedItem();
 
         // if statements make sure that a username and password is input
-        if(usernameField.getText().length() <= 0)
+        if (usernameField.getText().length() <= 0)
             usernameDialog();
 
-        else if(passwordField.getText().length() <= 0)
+        else if (passwordField.getText().length() <= 0)
             passwordDialog();
 
         else {
             Account newAccount = new Account(username, password, accountRole);
             model.addAccount(newAccount);
+            finish();
         }
-
-        finish();
     }
 
 }

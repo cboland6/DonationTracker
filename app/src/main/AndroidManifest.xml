@@ -20,6 +20,7 @@
         <activity android:name=".Controllers.HomeScreen" />
         <activity android:name=".Controllers.LoginFail"></activity>
         <activity android:name=".Controllers.RegScreen" />
+        <activity android:name=".Controllers.LocationListScreen" />
     </application>
 
 </manifest>

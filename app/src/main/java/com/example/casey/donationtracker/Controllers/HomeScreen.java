@@ -60,7 +60,6 @@ public class HomeScreen extends AppCompatActivity {
             if (IS == null) {
                 throw new IOException();
             } else {
-
                 BufferedReader BR = new BufferedReader(new InputStreamReader(IS, StandardCharsets.UTF_8));
                 String line;
                 BR.readLine();

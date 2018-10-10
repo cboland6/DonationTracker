@@ -14,6 +14,5 @@ public class LocationList {
 
     public List<Location> getLocations() { return locations; }
 
-
-
+    public void clearLocations() { this.locations = new ArrayList<>(); }
 }

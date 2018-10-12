@@ -7,9 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.casey.donationtracker.Model.Location;
 import com.example.casey.donationtracker.Model.LocationList;
+import com.example.casey.donationtracker.Model.Model;
 import com.example.casey.donationtracker.R;
 
 import java.io.BufferedReader;
@@ -24,6 +26,8 @@ public class HomeScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+        TextView welcomeMessage = (TextView) findViewById(R.id.textView2);
+        welcomeMessage.setText("Welcome, " + Model.getInstance().getCurrentAccount().getUsername().toString());
 
         configureLogOutButton();
         configureLocationsButton();

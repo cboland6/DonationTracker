@@ -62,7 +62,7 @@ public class LocationListScreen extends AppCompatActivity {
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mItem = mValues.get(position);
             holder.mIdView.setText("" + mValues.get(position).getLocationName());
-            holder.mContentView.setText(", " + mValues.get(position).getCity());
+            holder.mContentView.setText(", " + mValues.get(position).getLocationType());
 
         }
 

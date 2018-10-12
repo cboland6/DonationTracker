@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,7 +62,7 @@ public class LocationListScreen extends AppCompatActivity {
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mItem = mValues.get(position);
             holder.mIdView.setText("" + mValues.get(position).getLocationName());
-            holder.mContentView.setText(" " + mValues.get(position).getLocationType());
+            holder.mContentView.setText(", " + mValues.get(position).getCity());
 
         }
 

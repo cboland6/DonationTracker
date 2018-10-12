@@ -38,7 +38,6 @@ public class Location {
     public String getLocationType() { return type; }
     public String getLocationPhone() { return phone; }
     public String getWebsite() { return website; }
-
-
+    public String getCity() { return city; }
 
 }

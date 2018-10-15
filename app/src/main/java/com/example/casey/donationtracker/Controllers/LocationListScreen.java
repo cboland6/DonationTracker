@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +16,10 @@ import com.example.casey.donationtracker.Model.Location;
 import com.example.casey.donationtracker.Model.LocationList;
 import com.example.casey.donationtracker.Controllers.HomeScreen;
 import android.support.v7.widget.RecyclerView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
-
 import com.example.casey.donationtracker.R;
 
 import java.util.List;
@@ -30,15 +32,14 @@ public class LocationListScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dataitem_list);
 
-
-        View recyclerView = findViewById(R.id.dataitem_list);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
         assert recyclerView != null;
-        setupRecyclerView((RecyclerView) recyclerView);
-
+        recyclerView.setLayoutManager(llm);
+        setupRecyclerView(recyclerView);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(LocationList.INSTANCE.getLocations()));
     }
 
@@ -59,11 +60,24 @@ public class LocationListScreen extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.mItem = mValues.get(position);
-            holder.mIdView.setText("" + mValues.get(position).getLocationName());
-            holder.mContentView.setText(", " + mValues.get(position).getLocationType());
+            holder.mIdView.setText(mValues.get(position).getLocationName());
+            holder.mIdView.append(", ");
+            holder.mIdView.append(mValues.get(position).getLocationType());
 
+            holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    Intent intent = new Intent(LocationListScreen.this, DetailLocation.class);
+                    intent.putExtra("LocationName", mValues.get(position).getLocationName());
+                    intent.putExtra("LocationType", mValues.get(position).getLocationType());
+                    intent.putExtra("Longitude", mValues.get(position).getLongitude());
+                    intent.putExtra("Latitude", mValues.get(position).getLatitude());
+                    intent.putExtra("Address", mValues.get(position).getAddress());
+                    intent.putExtra("PhoneNumber", mValues.get(position).getLocationPhone());
+                    LocationListScreen.this.startActivity(intent);
+                }
+            });
         }
 
         @Override
@@ -72,21 +86,21 @@ public class LocationListScreen extends AppCompatActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            public final View mView;
-            public final TextView mIdView;
-            public final TextView mContentView;
-            public Location mItem;
+            View mView;
+            TextView mIdView;
+            Location mItem;
+            LinearLayout parentLayout;
 
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (TextView) view.findViewById(R.id.id);
-                mContentView = (TextView) view.findViewById(R.id.content);
+                mIdView = (TextView) view.findViewById(R.id.LocName);
+                parentLayout = (LinearLayout) view.findViewById(R.id.data_item_list_content);
             }
 
             @Override
             public String toString() {
-                return super.toString() + " '" + mContentView.getText() + "'";
+                return super.toString() + " '";
             }
         }
     }

@@ -21,6 +21,7 @@
         <activity android:name=".Controllers.LoginFail"></activity>
         <activity android:name=".Controllers.RegScreen" />
         <activity android:name=".Controllers.LocationListScreen" />
+        <activity android:name=".Controllers.DetailLocation" />
     </application>
 
 </manifest>

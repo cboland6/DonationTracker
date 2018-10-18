@@ -1,25 +1,21 @@
 package com.example.casey.donationtracker.Controllers;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+
 import com.example.casey.donationtracker.Model.Location;
-import com.example.casey.donationtracker.Model.LocationList;
-import com.example.casey.donationtracker.Controllers.HomeScreen;
+
 import android.support.v7.widget.RecyclerView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toolbar;
+
+import com.example.casey.donationtracker.Model.Model;
 import com.example.casey.donationtracker.R;
 
 import java.util.List;
@@ -40,7 +36,7 @@ public class LocationListScreen extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(LocationList.INSTANCE.getLocations()));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(Model.getInstance().getLocations()));
     }
 
     public class SimpleItemRecyclerViewAdapter

@@ -11,13 +11,21 @@ public class Model {
 
     /** list of all accounts */
     private List<Account> _accounts;
+    private List<Location> _locations;
 
     // the current account using the app
     private Account _currentAccount;
 
     private Model() {
         _accounts = new ArrayList<>();
+        _locations = new ArrayList<>();
     }
+
+    public void addLocation(Location loc) { _locations.add(loc); }
+
+    public List<Location> getLocations() { return _locations; }
+
+    public void clearLocations() { this._locations = new ArrayList<>(); }
 
     public boolean addAccount(Account account) {
         for (Account c : _accounts ) {
@@ -55,6 +63,4 @@ public class Model {
     public Account getCurrentAccount() {
         return _currentAccount;
     }
-
-
 }

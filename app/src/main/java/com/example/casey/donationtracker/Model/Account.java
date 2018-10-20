@@ -21,6 +21,7 @@ public class Account {
      * @param password the input password to test
      * @return true if the passwords match (else false)
      */
+
     public boolean validatePassword(String password) {
         return _password.equals(password);
     }

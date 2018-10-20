@@ -5,13 +5,16 @@ import java.util.ArrayList;
 
 public class Model {
 
+
     /** Singleton instance */
     private static final Model _instance = new Model();
     public static Model getInstance() { return _instance; }
 
+
     /** list of all accounts */
     private List<Account> _accounts;
     private List<Location> _locations;
+
 
     // the current account using the app
     private Account _currentAccount;
@@ -44,6 +47,7 @@ public class Model {
         return null;
     }
 
+
     /**
      * Check the passed in login credentials against known account credentials
      * @param username the username of the account to check
@@ -60,6 +64,7 @@ public class Model {
         }
     }
 
+    
     public Account getCurrentAccount() {
         return _currentAccount;
     }

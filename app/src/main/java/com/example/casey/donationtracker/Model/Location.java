@@ -44,9 +44,12 @@ public class Location {
     public String getWebsite() { return website; }
     public String getCity() { return city; }
 
-    public void addItem(//the stuff that item needs) {
-        Item i = new Item(//the stuff)
+    public void addItem(String shortDescription, String fullDescription,
+                        int value, Category category) {
+        Item i = new Item(this, shortDescription, fullDescription, value, category);
+        //constructor found in the Item class
         items.add(i);
+        //adds this item to the location's list of items
     }
 
 }

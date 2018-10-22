@@ -5,15 +5,144 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Spinner
+        android:id="@+id/categorySpinner"
+        android:layout_width="165dp"
+        android:layout_height="13dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toEndOf="@+id/valueLabel"
+        app:layout_constraintTop_toBottomOf="@+id/addItemValue" />
+
+    <EditText
+        android:id="@+id/addItemFullDesc"
+        android:layout_width="100dp"
+        android:layout_height="39dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/addItemValue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/fullDescLabel"
+        app:layout_constraintTop_toBottomOf="@+id/addItemShortDesc" />
+
     <TextView
-        android:id="@+id/addItemText"
+        android:id="@+id/valueLabel"
+        android:layout_width="138dp"
+        android:layout_height="36dp"
+        android:text="Value of donation($):"
+        app:layout_constraintBottom_toTopOf="@+id/categoryLabel"
+        app:layout_constraintEnd_toStartOf="@+id/addItemValue"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fullDescLabel" />
+
+    <TextView
+        android:id="@+id/addItemTitle"
         android:layout_width="235dp"
         android:layout_height="64dp"
         android:text="Add a new Donation Item"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.103" />
+        app:layout_constraintVertical_bias="0.031" />
+
+    <EditText
+        android:id="@+id/addItemValue"
+        android:layout_width="100dp"
+        android:layout_height="39dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/categorySpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/fullDescLabel"
+        app:layout_constraintTop_toBottomOf="@+id/addItemFullDesc" />
+
+    <EditText
+        android:id="@+id/addItemShortDesc"
+        android:layout_width="100dp"
+        android:layout_height="39dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/addItemFullDesc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/shortDescLabel"
+        app:layout_constraintTop_toBottomOf="@+id/locationSpinner" />
+
+    <TextView
+        android:id="@+id/fullDescLabel"
+        android:layout_width="111dp"
+        android:layout_height="36dp"
+        android:text="Full Description:"
+        app:layout_constraintBottom_toTopOf="@+id/valueLabel"
+        app:layout_constraintEnd_toStartOf="@+id/addItemFullDesc"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shortDescLabel" />
+
+
+    <TextView
+        android:id="@+id/shortDescLabel"
+        android:layout_width="156dp"
+        android:layout_height="36dp"
+        android:text="Short Description:"
+
+
+        app:layout_constraintBottom_toTopOf="@+id/fullDescLabel"
+        app:layout_constraintEnd_toStartOf="@+id/addItemShortDesc"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationLabel" />
+
+    <TextView
+        android:id="@+id/locationLabel"
+        android:layout_width="95dp"
+        android:layout_height="32dp"
+        android:text="Location:"
+        app:layout_constraintBottom_toTopOf="@+id/addItemShortDesc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addItemTitle"
+        app:layout_constraintVertical_bias="0.283" />
+
+    <TextView
+        android:id="@+id/categoryLabel"
+        android:layout_width="148dp"
+        android:layout_height="36dp"
+        android:text="Category of donation item:"
+        app:layout_constraintBottom_toTopOf="@+id/addItemButton"
+        app:layout_constraintEnd_toStartOf="@+id/categorySpinner"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/valueLabel" />
+
+    <Spinner
+        android:id="@+id/locationSpinner"
+        android:layout_width="165dp"
+        android:layout_height="33dp"
+        app:layout_constraintBottom_toTopOf="@+id/addItemShortDesc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.851"
+        app:layout_constraintStart_toEndOf="@+id/locationLabel"
+        app:layout_constraintTop_toBottomOf="@+id/addItemTitle"
+        app:layout_constraintVertical_bias="0.29" />
+
+    <Button
+        android:id="@+id/addItemButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onAddButtonPressed"
+        android:text="Add item"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/categorySpinner"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categoryLabel" />
 </android.support.constraint.ConstraintLayout>

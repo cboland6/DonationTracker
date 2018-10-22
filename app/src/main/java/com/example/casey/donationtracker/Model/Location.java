@@ -1,5 +1,7 @@
 package com.example.casey.donationtracker.Model;
 
+import java.util.ArrayList;
+
 public class Location {
     private String name;
     private String latitude;
@@ -12,6 +14,7 @@ public class Location {
     private String phone;
     private String website;
     private String Address;
+    private ArrayList<Item> items;
 
     public Location(String n, String lat, String lo, String sA,
                     String c, String s, String z, String t, String p, String w) {
@@ -26,6 +29,7 @@ public class Location {
         phone = p;
         website = w;
         Address = streetAddress + ", " + city + ", " + state + ", " + zip;
+        items = new ArrayList<>();
     }
 
 
@@ -39,5 +43,10 @@ public class Location {
     public String getLocationPhone() { return phone; }
     public String getWebsite() { return website; }
     public String getCity() { return city; }
+
+    public void addItem(//the stuff that item needs) {
+        Item i = new Item(//the stuff)
+        items.add(i);
+    }
 
 }

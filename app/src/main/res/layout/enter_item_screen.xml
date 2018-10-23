@@ -5,144 +5,157 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Spinner
-        android:id="@+id/categorySpinner"
-        android:layout_width="165dp"
-        android:layout_height="13dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
-        app:layout_constraintStart_toEndOf="@+id/valueLabel"
-        app:layout_constraintTop_toBottomOf="@+id/addItemValue" />
-
-    <EditText
-        android:id="@+id/addItemFullDesc"
-        android:layout_width="100dp"
-        android:layout_height="39dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/addItemValue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/fullDescLabel"
-        app:layout_constraintTop_toBottomOf="@+id/addItemShortDesc" />
-
-    <TextView
-        android:id="@+id/valueLabel"
-        android:layout_width="138dp"
-        android:layout_height="36dp"
-        android:text="Value of donation($):"
-        app:layout_constraintBottom_toTopOf="@+id/categoryLabel"
-        app:layout_constraintEnd_toStartOf="@+id/addItemValue"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullDescLabel" />
-
     <TextView
         android:id="@+id/addItemTitle"
-        android:layout_width="235dp"
-        android:layout_height="64dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center_horizontal"
         android:text="Add a new Donation Item"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.031" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/addItemValue"
-        android:layout_width="100dp"
-        android:layout_height="39dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/categorySpinner"
+    <TableLayout
+        android:id="@+id/addItemTable"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:stretchColumns="2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/fullDescLabel"
-        app:layout_constraintTop_toBottomOf="@+id/addItemFullDesc" />
-
-    <EditText
-        android:id="@+id/addItemShortDesc"
-        android:layout_width="100dp"
-        android:layout_height="39dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/addItemFullDesc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/shortDescLabel"
-        app:layout_constraintTop_toBottomOf="@+id/locationSpinner" />
-
-    <TextView
-        android:id="@+id/fullDescLabel"
-        android:layout_width="111dp"
-        android:layout_height="36dp"
-        android:text="Full Description:"
-        app:layout_constraintBottom_toTopOf="@+id/valueLabel"
-        app:layout_constraintEnd_toStartOf="@+id/addItemFullDesc"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shortDescLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/addItemTitle">
 
+        <TableRow android:layout_gravity="center_horizontal">
 
-    <TextView
-        android:id="@+id/shortDescLabel"
-        android:layout_width="156dp"
-        android:layout_height="36dp"
-        android:text="Short Description:"
+            <TextView
+                android:id="@+id/locationLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location:" />
+        </TableRow>
 
+        <TableRow
+            android:layout_gravity="center_horizontal"
+            android:layout_weightsum="1">
 
-        app:layout_constraintBottom_toTopOf="@+id/fullDescLabel"
-        app:layout_constraintEnd_toStartOf="@+id/addItemShortDesc"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/locationLabel" />
+            <Spinner
+                android:id="@+id/locationSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1" />
+        </TableRow>
 
-    <TextView
-        android:id="@+id/locationLabel"
-        android:layout_width="95dp"
-        android:layout_height="32dp"
-        android:text="Location:"
-        app:layout_constraintBottom_toTopOf="@+id/addItemShortDesc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addItemTitle"
-        app:layout_constraintVertical_bias="0.283" />
+        <TableRow>
 
-    <TextView
-        android:id="@+id/categoryLabel"
-        android:layout_width="148dp"
-        android:layout_height="36dp"
-        android:text="Category of donation item:"
-        app:layout_constraintBottom_toTopOf="@+id/addItemButton"
-        app:layout_constraintEnd_toStartOf="@+id/categorySpinner"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/valueLabel" />
+            <TextView
+                android:id="@+id/categoryLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category of donation item:" />
+        </TableRow>
 
-    <Spinner
-        android:id="@+id/locationSpinner"
-        android:layout_width="165dp"
-        android:layout_height="33dp"
-        app:layout_constraintBottom_toTopOf="@+id/addItemShortDesc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.851"
-        app:layout_constraintStart_toEndOf="@+id/locationLabel"
-        app:layout_constraintTop_toBottomOf="@+id/addItemTitle"
-        app:layout_constraintVertical_bias="0.29" />
+        <TableRow
+            android:layout_gravity="center_horizontal"
+            android:layout_weightsum="1">
+
+            <Spinner
+                android:id="@+id/categorySpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/fullDescLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full Description:" />
+        </TableRow>
+
+        <TableRow
+            android:layout_gravity="center_horizontal"
+            android:layout_weightsum="1">
+
+            <EditText
+                android:id="@+id/addItemFullDesc"
+                android:layout_width="328dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:ems="10" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/shortDescLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Short Description:" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_gravity="center_horizontal"
+            android:layout_weightsum="1">
+
+            <EditText
+                android:id="@+id/addItemShortDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:ems="10" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/valueLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Value of donation($):" />
+        </TableRow>
+
+        <TableRow
+            android:layout_gravity="center_horizontal"
+            android:layout_weightsum="1">
+
+            <EditText
+                android:id="@+id/addItemValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number" />
+        </TableRow>
+    </TableLayout>
 
     <Button
         android:id="@+id/addItemButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="44dp"
         android:onClick="onAddButtonPressed"
         android:text="Add item"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/categorySpinner"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/addItemTable" />
 </android.support.constraint.ConstraintLayout>

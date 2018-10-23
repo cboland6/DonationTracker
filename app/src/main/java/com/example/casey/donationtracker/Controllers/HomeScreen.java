@@ -25,7 +25,7 @@ public class HomeScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-        TextView welcomeMessage = (TextView) findViewById(R.id.textView2);
+        TextView welcomeMessage = findViewById(R.id.textView2);
         welcomeMessage.setText("Welcome, " + Model.getInstance().getCurrentAccount().getUsername().toString());
 
         configureLogOutButton();
@@ -34,7 +34,7 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     private void configureLogOutButton() {
-        Button logOutButton = (Button) findViewById(R.id.Back);
+        Button logOutButton = findViewById(R.id.Back);
         logOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +44,7 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     private void configureLocationsButton() {
-        Button locationsButton = (Button) findViewById(R.id.Locations);
+        Button locationsButton = findViewById(R.id.Locations);
         locationsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +55,7 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     private void configureAddItemButton() {
-        Button ItemEntry = (Button) findViewById(R.id.ItemEntry);
+        Button ItemEntry = findViewById(R.id.ItemEntry);
         ItemEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

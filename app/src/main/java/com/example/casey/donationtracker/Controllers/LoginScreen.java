@@ -25,10 +25,10 @@ public class LoginScreen extends AppCompatActivity {
         setContentView(R.layout.activity_login_screen);
 
         // Grab widgets
-        usernameField = (EditText)findViewById(R.id.editText);
-        passwordField = (EditText)findViewById(R.id.editText2);
-        loginButton = (Button)findViewById(R.id.log2);
-        cancelButton = (Button)findViewById(R.id.cancelbutton);
+        usernameField = findViewById(R.id.editText);
+        passwordField = findViewById(R.id.editText2);
+        loginButton = findViewById(R.id.log2);
+        cancelButton = findViewById(R.id.cancelbutton);
 
     }
 

@@ -1,5 +1,6 @@
 package com.example.casey.donationtracker.Controllers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -34,23 +35,23 @@ public class ItemEntryScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_entry_screen);
-        TextView header = (TextView) findViewById(R.id.textView6);
+        TextView header = findViewById(R.id.textView6);
         header.setText("Please Enter Item Information Below");
 
         /**
          * Grab the dialog widgets so we can get info for later
          */
-        shortDescriptionField = (EditText) findViewById(R.id.enterBriefDesc);
-        fullDescriptionField = (EditText) findViewById(R.id.enterFullDesc);
-        valueField = (EditText) findViewById(R.id.enterValue);
-        hourSpinner = (Spinner) findViewById(R.id.hour);
-        minSpinner = (Spinner) findViewById(R.id.min);
-        AMPMSpinner = (Spinner) findViewById(R.id.AMPM);
-        monthSpinner = (Spinner) findViewById(R.id.month);
-        daySpinner = (Spinner) findViewById(R.id.day);
-        yearSpinner = (Spinner) findViewById(R.id.year);
-        locationSpinner = (Spinner) findViewById(R.id.location);
-        categorySpinner = (Spinner) findViewById(R.id.category);
+        shortDescriptionField = findViewById(R.id.enterBriefDesc);
+        fullDescriptionField = findViewById(R.id.enterFullDesc);
+        valueField = findViewById(R.id.enterValue);
+        hourSpinner = findViewById(R.id.hour);
+        minSpinner = findViewById(R.id.min);
+        AMPMSpinner = findViewById(R.id.AMPM);
+        monthSpinner = findViewById(R.id.month);
+        daySpinner = findViewById(R.id.day);
+        yearSpinner = findViewById(R.id.year);
+        locationSpinner = findViewById(R.id.location);
+        categorySpinner = findViewById(R.id.category);
 
         Integer[] hours = new Integer[] {1,2,3,4,5,6,7,8,9,10,11,12};
         String[] minutes = new String[] {"00", "05", "10", "15", "20", "25", "30", "35","40", "45", "50", "55"};
@@ -115,9 +116,6 @@ public class ItemEntryScreen extends AppCompatActivity {
         int min = (Integer) minSpinner.getSelectedItem();
 
 
-        itemTime = itemTime.of(year,month,day,hour,min);
-
-
-        currentLoc.addItem(itemTime, currentLoc, shortDesc, fullDesc, value, category);
+        itemTime = LocalDateTime.of(year,month,day,hour,min);
     }
 }

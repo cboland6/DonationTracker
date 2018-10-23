@@ -1,8 +1,8 @@
 package com.example.casey.donationtracker.Controllers;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +30,7 @@ public class HomeScreen extends AppCompatActivity {
 
         configureLogOutButton();
         configureLocationsButton();
+        configureAddItemButton();
     }
 
     private void configureLogOutButton() {
@@ -49,6 +50,17 @@ public class HomeScreen extends AppCompatActivity {
             public void onClick(View v) {
                 readSDFile();
                 startActivity(new Intent(HomeScreen.this, LocationListScreen.class));
+            }
+        });
+    }
+
+    private void configureAddItemButton() {
+        Button ItemEntry = (Button) findViewById(R.id.ItemEntry);
+        ItemEntry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                readSDFile();
+                startActivity(new Intent(HomeScreen.this, ItemEntryScreen.class));
             }
         });
     }

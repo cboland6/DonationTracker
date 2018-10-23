@@ -22,6 +22,7 @@
         <activity android:name=".Controllers.RegScreen" />
         <activity android:name=".Controllers.LocationListScreen" />
         <activity android:name=".Controllers.DetailLocation" />
+        <activity android:name=".Controllers.ItemEntryScreen" />
     </application>
 
 </manifest>

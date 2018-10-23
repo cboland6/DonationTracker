@@ -26,7 +26,7 @@ public class LocationListScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dataitem_list);
+        setContentView(R.layout.location_list);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
@@ -51,7 +51,7 @@ public class LocationListScreen extends AppCompatActivity {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.data_item_list_content, parent, false);
+                    .inflate(R.layout.location_list_content, parent, false);
             return new ViewHolder(view);
         }
 
@@ -59,8 +59,7 @@ public class LocationListScreen extends AppCompatActivity {
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.mItem = mValues.get(position);
             holder.mIdView.setText(mValues.get(position).getLocationName());
-            holder.mIdView.append(", ");
-            holder.mIdView.append(mValues.get(position).getLocationType());
+            holder.mAddress.setText(mValues.get(position).getAddress());
 
             holder.parentLayout.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
@@ -84,14 +83,16 @@ public class LocationListScreen extends AppCompatActivity {
         public class ViewHolder extends RecyclerView.ViewHolder {
             View mView;
             TextView mIdView;
+            TextView mAddress;
             Location mItem;
             LinearLayout parentLayout;
 
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (TextView) view.findViewById(R.id.LocName);
-                parentLayout = (LinearLayout) view.findViewById(R.id.data_item_list_content);
+                mIdView = (TextView) view.findViewById(R.id.location_name);
+                mAddress = (TextView) view.findViewById(R.id.location_address);
+                parentLayout = (LinearLayout) view.findViewById(R.id.location_list_content);
             }
 
             @Override

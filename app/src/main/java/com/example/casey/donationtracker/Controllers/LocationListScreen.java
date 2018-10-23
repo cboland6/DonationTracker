@@ -5,16 +5,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.casey.donationtracker.Model.Location;
-
-import android.support.v7.widget.RecyclerView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.casey.donationtracker.Model.Location;
 import com.example.casey.donationtracker.Model.Model;
 import com.example.casey.donationtracker.R;
 
@@ -90,9 +88,9 @@ public class LocationListScreen extends AppCompatActivity {
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (TextView) view.findViewById(R.id.location_name);
-                mAddress = (TextView) view.findViewById(R.id.location_address);
-                parentLayout = (LinearLayout) view.findViewById(R.id.location_list_content);
+                mIdView = view.findViewById(R.id.location_name);
+                mAddress = view.findViewById(R.id.location_address);
+                parentLayout = view.findViewById(R.id.location_list_content);
             }
 
             @Override

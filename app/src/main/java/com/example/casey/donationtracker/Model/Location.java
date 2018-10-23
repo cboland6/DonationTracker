@@ -1,5 +1,8 @@
 package com.example.casey.donationtracker.Model;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+
 public class Location {
     private String name;
     private String latitude;
@@ -12,6 +15,7 @@ public class Location {
     private String phone;
     private String website;
     private String Address;
+    private ArrayList<Item> items;
 
     public Location(String n, String lat, String lo, String sA,
                     String c, String s, String z, String t, String p, String w) {
@@ -39,5 +43,13 @@ public class Location {
     public String getLocationPhone() { return phone; }
     public String getWebsite() { return website; }
     public String getCity() { return city; }
+
+    public void addItem(LocalDateTime timeStamp, Location loc, String shortDescription, String fullDescription,
+                        int value, Category category) {
+        Item i = new Item(timeStamp, loc, shortDescription, fullDescription, value, category);
+        //constructor found in the Item class
+        items.add(i);
+        //adds this item to the location's list of items
+    }
 
 }

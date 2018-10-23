@@ -1,8 +1,8 @@
 package com.example.casey.donationtracker.Controllers;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void configureLoginButton() {
-        Button nextButton = (Button) findViewById(R.id.log1);
+        Button nextButton = findViewById(R.id.log1);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void configureRegButton() {
-        Button regButton = (Button) findViewById(R.id.regbutton);
+        Button regButton = findViewById(R.id.regbutton);
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

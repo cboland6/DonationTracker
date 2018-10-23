@@ -1,8 +1,8 @@
 package com.example.casey.donationtracker.Controllers;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,15 +25,16 @@ public class HomeScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-        TextView welcomeMessage = (TextView) findViewById(R.id.textView2);
+        TextView welcomeMessage = findViewById(R.id.textView2);
         welcomeMessage.setText("Welcome, " + Model.getInstance().getCurrentAccount().getUsername().toString());
 
         configureLogOutButton();
         configureLocationsButton();
+        configureAddItemButton();
     }
 
     private void configureLogOutButton() {
-        Button logOutButton = (Button) findViewById(R.id.Back);
+        Button logOutButton = findViewById(R.id.Back);
         logOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,12 +44,23 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     private void configureLocationsButton() {
-        Button locationsButton = (Button) findViewById(R.id.Locations);
+        Button locationsButton = findViewById(R.id.Locations);
         locationsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 readSDFile();
                 startActivity(new Intent(HomeScreen.this, LocationListScreen.class));
+            }
+        });
+    }
+
+    private void configureAddItemButton() {
+        Button ItemEntry = findViewById(R.id.ItemEntry);
+        ItemEntry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                readSDFile();
+                startActivity(new Intent(HomeScreen.this, ItemEntryScreen.class));
             }
         });
     }

@@ -1,16 +1,17 @@
 package com.example.casey.donationtracker.Model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Item {
-    private Date timeStamp;
+    private LocalDateTime timeStamp;
     private Location itemLocation;
     private String shortDescription;
     private String fullDescription;
     private int value;
     private Category category;
+    private String comments;
 
-    public Item(Date timeStamp, Location itemLocation, String shortDescription, String fullDescription,
+    public Item(LocalDateTime timeStamp, Location itemLocation, String shortDescription, String fullDescription,
                 int value, Category category) {
 
         this.timeStamp = timeStamp;
@@ -21,11 +22,13 @@ public class Item {
         this.category = category;
     }
 
-    public Date getTimeStamp() { return timeStamp; }
+    public void setComments(String com) { this.comments = com; }
+    public LocalDateTime getTimeStamp() { return timeStamp; }
     public Location getItemLocation() { return itemLocation; }
     public String getShortDescription() { return shortDescription; }
     public String getFullDescription() { return fullDescription; }
     public int getValue() { return value; }
     public Category getCategory() { return category; }
+    public String getComments() { return comments; }
 
 }

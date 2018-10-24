@@ -26,7 +26,7 @@ public class HomeScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
         TextView welcomeMessage = findViewById(R.id.textView2);
-        welcomeMessage.setText("Welcome, " + Model.getInstance().getCurrentAccount().getUsername().toString());
+        //welcomeMessage.setText("Welcome, " + Model.getInstance().getCurrentAccount().getUsername().toString());
 
         configureLogOutButton();
         configureLocationsButton();

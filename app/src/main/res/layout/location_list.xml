@@ -17,7 +17,6 @@
         android:textSize="20sp"
         android:textColor="#000"
         android:layout_height="wrap_content"
-        android:textAppearance="?attr/textAppearanceListItem"
         android:layout_gravity="center_horizontal"
         android:text="Locations"
         />

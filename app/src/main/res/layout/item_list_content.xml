@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:paddingTop="10dp"
     android:paddingBottom="10dp"
-    android:id="@+id/location_list_content"
+    android:id="@+id/item_list_content"
     >
 
     <TextView

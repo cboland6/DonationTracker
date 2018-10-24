@@ -34,10 +34,10 @@ public class ItemListScreen extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new ItemListScreen.SimpleItemRecyclerViewAdapter(loc.getItems()));
+        recyclerView.setAdapter(new ItemListScreen.SimpleItemRecyclerViewAdapter(Model.getInstance().getLocations().get(0).getItems()));
     }
     public class SimpleItemRecyclerViewAdapter
-            extends RecyclerView.Adapter<LocationListScreen.SimpleItemRecyclerViewAdapter.ViewHolder> {
+            extends RecyclerView.Adapter<ItemListScreen.SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final List<Item> mItems;
 
@@ -53,20 +53,17 @@ public class ItemListScreen extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final LocationListScreen.SimpleItemRecyclerViewAdapter.ViewHolder holder, final int position) {
-            holder.mItem = mItems.get(position);
-            holder.mIdView.setText(mItems.get(position).getShortDescription());
-            holder.mAddress.setText(mValues.get(position).getAddress());
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
+            holder.mSDescView.setText(mItems.get(position).getShortDescription());
+            holder.mCatView.setText(mItems.get(position).getCategory().toString());
 
             holder.parentLayout.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     Intent intent = new Intent(ItemListScreen.this, DetailItem.class);
-                    intent.putExtra("LocationName", mValues.get(position).getLocationName());
-                    intent.putExtra("LocationType", mValues.get(position).getLocationType());
-                    intent.putExtra("Longitude", mValues.get(position).getLongitude());
-                    intent.putExtra("Latitude", mValues.get(position).getLatitude());
-                    intent.putExtra("Address", mValues.get(position).getAddress());
-                    intent.putExtra("PhoneNumber", mValues.get(position).getLocationPhone());
+                    intent.putExtra("shortDesc", mItems.get(position).getShortDescription());
+                    intent.putExtra("fullDesc", mItems.get(position).getFullDescription());
+                    intent.putExtra("value", mItems.get(position).getValue());
+                    intent.putExtra("category", mItems.get(position).getCategory());
                     ItemListScreen.this.startActivity(intent);
                 }
             });
@@ -79,16 +76,15 @@ public class ItemListScreen extends AppCompatActivity {
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             View mView;
-            TextView mIdView;
-            TextView mAddress;
-            Location mItem;
+            TextView mSDescView;
+            TextView mCatView;
             LinearLayout parentLayout;
 
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = view.findViewById(R.id.item_shortDesc);
-                mAddress = view.findViewById(R.id.item_category);
+                mSDescView = view.findViewById(R.id.item_shortDesc);
+                mCatView = view.findViewById(R.id.item_category);
                 parentLayout = view.findViewById(R.id.item_list_content);
             }
 

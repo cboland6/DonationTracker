@@ -30,6 +30,7 @@ public class Location {
         phone = p;
         website = w;
         Address = streetAddress + ", " + city + ", " + state + ", " + zip;
+        items = new ArrayList<>();
     }
 
 

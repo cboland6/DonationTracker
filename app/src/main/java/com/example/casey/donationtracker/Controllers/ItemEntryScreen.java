@@ -120,13 +120,17 @@ public class ItemEntryScreen extends AppCompatActivity {
             /**
              * hour needs to be implemented here... should be the value of hour if AM, or hour + 12 if PM
              */
-            int min = (Integer) minSpinner.getSelectedItem();
+            int min = Integer.parseInt(minSpinner.getSelectedItem().toString());
 
 
             itemTime = LocalDateTime.of(year,month,day,hour,min);
 
             currentLoc.addItem(itemTime, currentLoc, shortDesc, fullDesc, value, category);
         }
+    }
+
+    public void onCancelPressed(View view) {
+        finish();
     }
 
     private boolean requiredFieldsPresent(EditText ... editTexts) {

@@ -29,6 +29,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6">
 
@@ -363,15 +364,32 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="100dp"
-                    android:layout_marginEnd="37dp"
-                    android:layout_marginStart="57dp"
-                    android:layout_marginTop="484dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
                     android:onClick="onAddButtonPressed"
                     android:text="Add Item"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/editText5"
-                    app:layout_constraintTop_toBottomOf="@+id/year" />
+                    app:layout_constraintHorizontal_bias="0.236"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editText5"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <Button
+                    android:id="@+id/cancelButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="100dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:onClick="onCancelPressed"
+                    android:text="Cancel"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.736"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editText5"
+                    app:layout_constraintVertical_bias="1.0" />
 
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>

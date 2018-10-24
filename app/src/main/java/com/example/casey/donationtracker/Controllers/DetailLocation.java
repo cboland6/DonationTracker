@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.casey.donationtracker.Model.Item;
+import com.example.casey.donationtracker.Model.Location;
 import com.example.casey.donationtracker.Model.Model;
 import com.example.casey.donationtracker.R;
 
@@ -22,7 +23,6 @@ public class DetailLocation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_location);
         itemButton = findViewById(R.id.viewItemsButton);
-
         getIncomingIntent();
     }
 

@@ -34,7 +34,7 @@ public class ItemListScreen extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(Model.getInstance().getLocations().get(0).getItems()));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(Model.getInstance().getCurrentLocation().getItems()));
     }
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
@@ -65,6 +65,7 @@ public class ItemListScreen extends AppCompatActivity {
                     intent.putExtra("fullDesc", mItems.get(position).getFullDescription());
                     intent.putExtra("value", Integer.toString(mItems.get(position).getValue()));
                     intent.putExtra("category", mItems.get(position).getCategory().toString());
+                    intent.putExtra("time", mItems.get(position).getTimeStamp().toString());
                     ItemListScreen.this.startActivity(intent);
                 }
             });

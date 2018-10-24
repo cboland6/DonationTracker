@@ -105,7 +105,7 @@ public class ItemEntryScreen extends AppCompatActivity {
         boolean fieldsPresent = requiredFieldsPresent(fullDescriptionField, valueField);
 
         if (fieldsPresent) {
-            Location currentLoc = (Location) locationSpinner.getSelectedItem();
+            Model.getInstance().setCurrentLocation((Location) locationSpinner.getSelectedItem());
             String shortDesc = shortDescriptionField.getText().toString();
             String fullDesc = fullDescriptionField.getText().toString();
             int value = Integer.parseInt(valueField.getText().toString());
@@ -125,7 +125,7 @@ public class ItemEntryScreen extends AppCompatActivity {
 
             itemTime = LocalDateTime.of(year,month,day,hour,min);
 
-            currentLoc.addItem(itemTime, currentLoc, shortDesc, fullDesc, value, category);
+            Model.getInstance().getCurrentLocation().addItem(itemTime, Model.getInstance().getCurrentLocation(), shortDesc, fullDesc, value, category);
             startActivity(new Intent(ItemEntryScreen.this, LocationListScreen.class));
             finish();
         }

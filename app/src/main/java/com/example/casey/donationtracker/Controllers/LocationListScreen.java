@@ -61,6 +61,7 @@ public class LocationListScreen extends AppCompatActivity {
 
             holder.parentLayout.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
+                    Model.getInstance().setCurrentLocation(mValues.get(position));
                     Intent intent = new Intent(LocationListScreen.this, DetailLocation.class);
                     intent.putExtra("LocationName", mValues.get(position).getLocationName());
                     intent.putExtra("LocationType", mValues.get(position).getLocationType());

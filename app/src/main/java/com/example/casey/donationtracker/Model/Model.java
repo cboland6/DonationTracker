@@ -1,6 +1,7 @@
 package com.example.casey.donationtracker.Model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Model {
@@ -15,9 +16,11 @@ public class Model {
     private List<Account> _accounts;
     private List<Location> _locations;
 
-
     // the current account using the app
     private Account _currentAccount;
+
+    //the selected location to view items of
+    private Location _currentLocation;
 
     private Model() {
         _accounts = new ArrayList<>();
@@ -27,6 +30,12 @@ public class Model {
     public void addLocation(Location loc) { _locations.add(loc); }
 
     public List<Location> getLocations() { return _locations; }
+
+    public Location getCurrentLocation() { return _currentLocation; }
+
+    public void setCurrentLocation(Location loc) {
+        this._currentLocation = loc;
+    }
 
     public void clearLocations() { this._locations = new ArrayList<>(); }
 

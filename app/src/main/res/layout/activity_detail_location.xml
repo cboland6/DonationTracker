@@ -61,8 +61,17 @@
     <Button
         android:id="@+id/viewItemsButton"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:onClick="viewItems"
         android:text="View Items" />
+
+    <Button
+        android:id="@+id/ItemEntry"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginEnd="230dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="10dp"
+        android:text="Add Item" />
 
 </LinearLayout>

@@ -63,8 +63,8 @@ public class ItemListScreen extends AppCompatActivity {
                     Intent intent = new Intent(ItemListScreen.this, DetailItem.class);
                     intent.putExtra("shortDesc", mItems.get(position).getShortDescription());
                     intent.putExtra("fullDesc", mItems.get(position).getFullDescription());
-                    intent.putExtra("value", mItems.get(position).getValue());
-                    intent.putExtra("category", mItems.get(position).getCategory());
+                    intent.putExtra("value", Integer.toString(mItems.get(position).getValue()));
+                    intent.putExtra("category", mItems.get(position).getCategory().toString());
                     ItemListScreen.this.startActivity(intent);
                 }
             });

@@ -61,14 +61,7 @@ public class DetailLocation extends AppCompatActivity {
     }
 
     public void viewItems(View view) {
-        if (Model.getInstance().getLocations().get(0).getItems().equals(new ArrayList<Item>())) {
-            startActivity(new Intent(DetailLocation.this, LoginFail.class));
-            finish();
-        }
-        else {
-            startActivity(new Intent(DetailLocation.this, ItemListScreen.class));
-            finish();
-        }
-
+        startActivity(new Intent(DetailLocation.this, ItemListScreen.class));
+        finish();
     }
 }

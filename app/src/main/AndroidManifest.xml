@@ -23,6 +23,7 @@
         <activity android:name=".Controllers.LocationListScreen" />
         <activity android:name=".Controllers.DetailLocation" />
         <activity android:name=".Controllers.ItemListScreen" />
+        <activity android:name=".Controllers.DetailItem" />
         <activity android:name=".Controllers.ItemEntryScreen" />
     </application>
 

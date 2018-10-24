@@ -4,15 +4,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.casey.donationtracker.Model.Model;
 import com.example.casey.donationtracker.R;
 
 public class DetailLocation extends AppCompatActivity {
+
+    Button itemButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_location);
+        itemButton = findViewById(R.id.viewItemsButton);
 
         getIncomingIntent();
     }
@@ -52,7 +58,14 @@ public class DetailLocation extends AppCompatActivity {
     }
 
     public void viewItems(View view) {
-        startActivity(new Intent(DetailLocation.this, ItemListScreen.class));
-        finish();
+        if (Model.getInstance().getLocations().get(0).getItems() == null) {
+            startActivity(new Intent(DetailLocation.this, LoginFail.class));
+            finish();
+        }
+        else {
+            startActivity(new Intent(DetailLocation.this, ItemListScreen.class));
+            finish();
+        }
+
     }
 }

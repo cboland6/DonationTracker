@@ -25,8 +25,8 @@ public class ItemListScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_list);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
 
+        LinearLayoutManager llm = new LinearLayoutManager(this);
         RecyclerView recyclerView = findViewById(R.id.recycler_view2);
         assert recyclerView != null;
         recyclerView.setLayoutManager(llm);
@@ -34,10 +34,10 @@ public class ItemListScreen extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new ItemListScreen.SimpleItemRecyclerViewAdapter(Model.getInstance().getLocations().get(0).getItems()));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(Model.getInstance().getLocations().get(0).getItems()));
     }
     public class SimpleItemRecyclerViewAdapter
-            extends RecyclerView.Adapter<ItemListScreen.SimpleItemRecyclerViewAdapter.ViewHolder> {
+            extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final List<Item> mItems;
 
@@ -54,6 +54,7 @@ public class ItemListScreen extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
+            holder.mItem = mItems.get(position);
             holder.mSDescView.setText(mItems.get(position).getShortDescription());
             holder.mCatView.setText(mItems.get(position).getCategory().toString());
 
@@ -76,6 +77,7 @@ public class ItemListScreen extends AppCompatActivity {
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             View mView;
+            Item mItem;
             TextView mSDescView;
             TextView mCatView;
             LinearLayout parentLayout;

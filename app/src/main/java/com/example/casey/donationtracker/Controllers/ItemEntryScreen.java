@@ -126,6 +126,8 @@ public class ItemEntryScreen extends AppCompatActivity {
             itemTime = LocalDateTime.of(year,month,day,hour,min);
 
             currentLoc.addItem(itemTime, currentLoc, shortDesc, fullDesc, value, category);
+            startActivity(new Intent(ItemEntryScreen.this, LocationListScreen.class));
+            finish();
         }
     }
 

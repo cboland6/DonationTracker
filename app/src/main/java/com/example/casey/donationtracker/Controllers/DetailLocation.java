@@ -1,7 +1,9 @@
 package com.example.casey.donationtracker.Controllers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.casey.donationtracker.R;
@@ -47,5 +49,10 @@ public class DetailLocation extends AppCompatActivity {
 
         TextView phone = findViewById(R.id.phoneNum);
         phone.setText(pho);
+    }
+
+    public void viewItems(View view) {
+        startActivity(new Intent(DetailLocation.this, ItemListScreen.class));
+        finish();
     }
 }

@@ -6,7 +6,7 @@
     android:padding="15dp" >
 
     <TextView
-        android:id="@+id/locListDetailTitle"
+        android:id="@+id/itemListDetail"
         android:layout_width="wrap_content"
         android:textSize="20sp"
         android:textColor="#000"
@@ -17,53 +17,31 @@
         />
 
     <TextView
-        android:id="@+id/nameLoc"
+        android:id="@+id/shortDescItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?attr/textAppearanceListItem"
         />
 
     <TextView
-        android:id="@+id/typeLoc"
+        android:id="@+id/fullDescItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?attr/textAppearanceListItem"
         />
 
     <TextView
-        android:id="@+id/longtitude"
+        android:id="@+id/value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?attr/textAppearanceListItem"
         />
 
     <TextView
-        android:id="@+id/latitude"
+        android:id="@+id/category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?attr/textAppearanceListItem"
-        />
-
-    <TextView
-    android:id="@+id/address"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textAppearance="?attr/textAppearanceListItem"
-    />
-
-    <TextView
-        android:id="@+id/phoneNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?attr/textAppearanceListItem"
-        />
-
-    <Button
-        android:id="@+id/viewItemsButton"
-        android:layout_height="30dp"
-        android:layout_width="50dp"
-        android:text="View Items"
-        android:onClick="viewItems"
         />
 
 </LinearLayout>

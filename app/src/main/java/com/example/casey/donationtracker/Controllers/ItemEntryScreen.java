@@ -109,7 +109,10 @@ public class ItemEntryScreen extends AppCompatActivity {
         int day = (Integer) daySpinner.getSelectedItem();
         int month = (Integer) monthSpinner.getSelectedItem();
         int year = (Integer) yearSpinner.getSelectedItem();
-        int hour = 1;
+        int hour = (Integer) hourSpinner.getSelectedItem();
+        if (AMPMSpinner.getSelectedItem().toString().equals("PM")) {
+            hour += 12;
+        }
         /**
          * hour needs to be implemented here... should be the value of hour if AM, or hour + 12 if PM
          */
@@ -117,5 +120,7 @@ public class ItemEntryScreen extends AppCompatActivity {
 
 
         itemTime = LocalDateTime.of(year,month,day,hour,min);
+
+        currentLoc.addItem(itemTime, currentLoc, shortDesc, fullDesc, value, category);
     }
 }

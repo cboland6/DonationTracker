@@ -65,10 +65,6 @@ public class ItemEntryScreen extends AppCompatActivity {
         /**
          * Array Adapters for Spinners
          */
-        ArrayAdapter<Location> locAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Model.getInstance().getLocations());
-        locAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        locationSpinner.setAdapter(locAdapter);
-
         ArrayAdapter<Category> catAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Category.values());
         catAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(catAdapter);
@@ -105,7 +101,6 @@ public class ItemEntryScreen extends AppCompatActivity {
         boolean fieldsPresent = requiredFieldsPresent(fullDescriptionField, valueField);
 
         if (fieldsPresent) {
-            Model.getInstance().setCurrentLocation((Location) locationSpinner.getSelectedItem());
             String shortDesc = shortDescriptionField.getText().toString();
             String fullDesc = fullDescriptionField.getText().toString();
             int value = Integer.parseInt(valueField.getText().toString());

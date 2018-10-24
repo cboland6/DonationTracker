@@ -46,7 +46,6 @@ public class LoginScreen extends AppCompatActivity {
             // invalid username or password
             startActivity(new Intent(LoginScreen.this, LoginFail.class));
         }
-
     }
 
     public void onCancelPressed(View view) {

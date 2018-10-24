@@ -101,26 +101,43 @@ public class ItemEntryScreen extends AppCompatActivity {
     }
 
     public void onAddButtonPressed(View view) {
-        Location currentLoc = (Location) locationSpinner.getSelectedItem();
-        String shortDesc = shortDescriptionField.getText().toString();
-        String fullDesc = fullDescriptionField.getText().toString();
-        int value = Integer.parseInt(valueField.getText().toString());
-        Category category = (Category) categorySpinner.getSelectedItem();
-        int day = (Integer) daySpinner.getSelectedItem();
-        int month = (Integer) monthSpinner.getSelectedItem();
-        int year = (Integer) yearSpinner.getSelectedItem();
-        int hour = (Integer) hourSpinner.getSelectedItem();
-        if (AMPMSpinner.getSelectedItem().toString().equals("PM")) {
-            hour += 12;
+        //required: timestamp, location, value, full description, category
+        boolean fieldsPresent = requiredFieldsPresent(fullDescriptionField, valueField);
+
+        if (fieldsPresent) {
+            Location currentLoc = (Location) locationSpinner.getSelectedItem();
+            String shortDesc = shortDescriptionField.getText().toString();
+            String fullDesc = fullDescriptionField.getText().toString();
+            int value = Integer.parseInt(valueField.getText().toString());
+            Category category = (Category) categorySpinner.getSelectedItem();
+            int day = (Integer) daySpinner.getSelectedItem();
+            int month = (Integer) monthSpinner.getSelectedItem();
+            int year = (Integer) yearSpinner.getSelectedItem();
+            int hour = (Integer) hourSpinner.getSelectedItem();
+            if (AMPMSpinner.getSelectedItem().toString().equals("PM")) {
+                hour += 12;
+            }
+            /**
+             * hour needs to be implemented here... should be the value of hour if AM, or hour + 12 if PM
+             */
+            int min = (Integer) minSpinner.getSelectedItem();
+
+
+            itemTime = LocalDateTime.of(year,month,day,hour,min);
+
+            currentLoc.addItem(itemTime, currentLoc, shortDesc, fullDesc, value, category);
         }
-        /**
-         * hour needs to be implemented here... should be the value of hour if AM, or hour + 12 if PM
-         */
-        int min = (Integer) minSpinner.getSelectedItem();
+    }
 
+    private boolean requiredFieldsPresent(EditText ... editTexts) {
+        boolean fieldsPresent = true;
 
-        itemTime = LocalDateTime.of(year,month,day,hour,min);
-
-        currentLoc.addItem(itemTime, currentLoc, shortDesc, fullDesc, value, category);
+        for (EditText e: editTexts) {
+            if (e.getText().toString().equals("")) {
+                e.setError("This field is required");
+                fieldsPresent = false;
+            }
+        }
+        return fieldsPresent;
     }
 }

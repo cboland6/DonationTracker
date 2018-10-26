@@ -64,7 +64,7 @@ public class Model {
         }
     }
 
-    
+
     public Account getCurrentAccount() {
         return _currentAccount;
     }

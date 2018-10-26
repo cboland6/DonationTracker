@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.example.casey.donationtracker.R;
 
 public class DetailLocation extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

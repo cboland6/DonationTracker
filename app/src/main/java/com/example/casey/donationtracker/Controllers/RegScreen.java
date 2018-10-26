@@ -39,7 +39,6 @@ public class RegScreen extends AppCompatActivity {
         roleSpinner.setAdapter(roleAdapter);
     }
 
-
     // Error message for username
     public void usernameDialog() {
         AlertDialog.Builder userBuilder = new AlertDialog.Builder(RegScreen.this);
@@ -50,7 +49,7 @@ public class RegScreen extends AppCompatActivity {
         userBuilder.create().show();
     }
 
-    // Error message for password
+    // Error message for password p
     public void passwordDialog() {
         AlertDialog.Builder passBuilder = new AlertDialog.Builder(RegScreen.this);
         View passView = getLayoutInflater().inflate(R.layout.dialog_pass, null);
@@ -60,7 +59,7 @@ public class RegScreen extends AppCompatActivity {
         passBuilder.create().show();
     }
 
-    //need register method here
+    //need register method here okay
     public void onRegisterPressed(View view) {
         Model model = Model.getInstance();
         String username = usernameField.getText().toString();

@@ -18,7 +18,6 @@ public class LoginScreen extends AppCompatActivity {
     Button loginButton;
     Button cancelButton;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

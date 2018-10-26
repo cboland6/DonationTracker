@@ -92,7 +92,6 @@ public class LocationListScreen extends AppCompatActivity {
                 mIdView = (TextView) view.findViewById(R.id.LocName);
                 parentLayout = (LinearLayout) view.findViewById(R.id.data_item_list_content);
             }
-
             @Override
             public String toString() {
                 return super.toString() + " '";

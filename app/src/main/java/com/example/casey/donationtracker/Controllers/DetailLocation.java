@@ -15,7 +15,6 @@ public class DetailLocation extends AppCompatActivity {
 
         getIncomingIntent();
     }
-
     private void getIncomingIntent () {
         if(getIntent().hasExtra("LocationName") && getIntent().hasExtra("LocationType") && getIntent().hasExtra("Longitude")
                 && getIntent().hasExtra("Latitude") && getIntent().hasExtra("Address") && getIntent().hasExtra("PhoneNumber")) {

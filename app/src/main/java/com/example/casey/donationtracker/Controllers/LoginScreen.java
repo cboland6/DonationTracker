@@ -28,7 +28,6 @@ public class LoginScreen extends AppCompatActivity {
         passwordField = (EditText)findViewById(R.id.editText2);
         loginButton = (Button)findViewById(R.id.log2);
         cancelButton = (Button)findViewById(R.id.cancelbutton);
-
     }
 
     public void login(View view) {

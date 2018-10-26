@@ -18,7 +18,6 @@ public class LoginFail extends AppCompatActivity {
         setContentView(R.layout.activity_login_fail);
 
         tryAgain = (Button) findViewById(R.id.tryAgainBtn);
-
         tryAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -15,7 +15,6 @@ import com.example.casey.donationtracker.R;
 import com.example.casey.donationtracker.Model.Account;
 import com.example.casey.donationtracker.Model.AccountRole;
 import com.example.casey.donationtracker.Model.Model;
-
 public class RegScreen extends AppCompatActivity {
 
     // Widgets
@@ -77,6 +76,7 @@ public class RegScreen extends AppCompatActivity {
             Account newAccount = new Account(username, password, accountRole);
             model.addAccount(newAccount);
             finish();
+
         }
     }
 

@@ -41,7 +41,6 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
     }
-
     private void configureLocationsButton() {
         Button locationsButton = (Button) findViewById(R.id.Locations);
         locationsButton.setOnClickListener(new View.OnClickListener() {

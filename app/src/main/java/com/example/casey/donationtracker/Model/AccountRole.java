@@ -11,7 +11,6 @@ public enum AccountRole {
         _accountRole = accountRole;
         _canEditInventory = canEditInventory;
     }
-
     public String toString() {
         return _accountRole;
     }

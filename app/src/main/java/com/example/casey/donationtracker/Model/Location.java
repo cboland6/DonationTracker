@@ -28,7 +28,6 @@ public class Location {
         Address = streetAddress + ", " + city + ", " + state + ", " + zip;
     }
 
-
     public String toString() { return name; }
 
     public String getLocationName() { return name; }

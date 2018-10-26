@@ -26,6 +26,7 @@ public class Account {
         return _password.equals(password);
     }
 
+
     /**
      * Make a new account
      * @param username the account's username

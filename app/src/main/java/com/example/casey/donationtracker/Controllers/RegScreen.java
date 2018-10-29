@@ -13,6 +13,8 @@ import com.example.casey.donationtracker.Model.Account;
 import com.example.casey.donationtracker.Model.AccountRole;
 import com.example.casey.donationtracker.Model.Model;
 import com.example.casey.donationtracker.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegScreen extends AppCompatActivity {
 
@@ -20,6 +22,10 @@ public class RegScreen extends AppCompatActivity {
     private EditText usernameField;
     private EditText passwordField;
     private Spinner roleSpinner;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("message");
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,8 @@ public class RegScreen extends AppCompatActivity {
         usernameField = findViewById(R.id.regUserName);
         passwordField = findViewById(R.id.regPassword);
         roleSpinner = findViewById(R.id.chooseUserType);
+
+
 
         // setup adapter to show possible Account Roles
         ArrayAdapter<AccountRole> roleAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, AccountRole.values());
@@ -75,8 +83,9 @@ public class RegScreen extends AppCompatActivity {
         else {
             Account newAccount = new Account(username, password, accountRole);
             model.addAccount(newAccount);
+            //add account to database here
+            myRef.child("accounts").setValue(newAccount);
             finish();
         }
     }
-
 }

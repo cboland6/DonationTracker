@@ -29,17 +29,24 @@ public class Model {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference ref = database.getReference();
     DatabaseReference usersRef = ref.child("users");
+    DatabaseReference locRef = ref.child("locations");
 
     private Model() {
         _accounts = new ArrayList<>();
         _locations = new ArrayList<>();
     }
 
-    public void addLocation(Location loc) { _locations.add(loc); }
+    public void addLocation(Location loc) {
+        _locations.add(loc);
+        //add it to firebase
+        locRef.setValue(_locations);
+    }
 
     public List<Location> getLocations() { return _locations; }
 
-    public Location getCurrentLocation() { return _currentLocation; }
+    public Location getCurrentLocation() {
+        return _currentLocation;
+    }
 
     public void setCurrentLocation(Location loc) {
         this._currentLocation = loc;

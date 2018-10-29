@@ -1,5 +1,8 @@
 package com.example.casey.donationtracker.Model;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +24,11 @@ public class Model {
 
     //the selected location to view items of
     private Location _currentLocation;
+
+    //the database
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference ref = database.getReference();
+    DatabaseReference usersRef = ref.child("users");
 
     private Model() {
         _accounts = new ArrayList<>();
@@ -44,6 +52,8 @@ public class Model {
             if (c.equals(account)) return false;
         }
         _accounts.add(account);
+        //add account to database here
+        usersRef.setValue(_accounts);
         return true;
     }
 

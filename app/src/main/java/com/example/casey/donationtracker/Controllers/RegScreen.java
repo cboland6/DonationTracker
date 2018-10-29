@@ -22,8 +22,6 @@ public class RegScreen extends AppCompatActivity {
     private EditText usernameField;
     private EditText passwordField;
     private Spinner roleSpinner;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("message");
 
 
 
@@ -83,8 +81,6 @@ public class RegScreen extends AppCompatActivity {
         else {
             Account newAccount = new Account(username, password, accountRole);
             model.addAccount(newAccount);
-            //add account to database here
-            myRef.child("accounts").setValue(newAccount);
             finish();
         }
     }

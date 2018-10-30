@@ -54,6 +54,7 @@ public class Model {
 
     public void clearLocations() { this._locations = new ArrayList<>(); }
 
+
     public boolean addAccount(Account account) {
         for (Account c : _accounts ) {
             if (c.equals(account)) return false;
@@ -94,4 +95,29 @@ public class Model {
     public Account getCurrentAccount() {
         return _currentAccount;
     }
+
+
+    // depending on where the search screen is, we may use current location or
+    // the selected location if there is a widget for that.
+    public List<Item> getMatchingItemsByCategory(Location loc, Category cat) {
+        List<Item> matches = new ArrayList<>();
+        for (Item i : loc.getItems()) {
+            if (i.getCategory().equals(cat)) {
+                matches.add(i);
+            }
+        }
+        return matches;
+    }
+
+    //uses short description as the item's name
+    public List<Item> getMatchingItemsByName(Location loc, String name) {
+        List<Item> matches = new ArrayList<>();
+        for (Item i : loc.getItems()) {
+            if (i.getShortDescription().equals(name)) {
+                matches.add(i);
+            }
+        }
+        return matches;
+    }
+
 }

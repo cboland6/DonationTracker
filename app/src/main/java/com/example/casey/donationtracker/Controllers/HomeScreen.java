@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.casey.donationtracker.Model.Item;
 import com.example.casey.donationtracker.Model.Location;
 import com.example.casey.donationtracker.Model.Model;
 import com.example.casey.donationtracker.R;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomeScreen extends AppCompatActivity {

@@ -99,6 +99,8 @@ public class Model {
 
     // depending on where the search screen is, we may use current location or
     // the selected location if there is a widget for that.
+    // We need to use this function to populate a recyclerview with the matches in the search
+    // screen. If there are no matches there should be a message saying so
     public List<Item> getMatchingItemsByCategory(Location loc, Category cat) {
         List<Item> matches = new ArrayList<>();
         for (Item i : loc.getItems()) {

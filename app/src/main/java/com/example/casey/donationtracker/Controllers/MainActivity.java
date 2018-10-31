@@ -3,12 +3,18 @@ package com.example.casey.donationtracker.Controllers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.casey.donationtracker.Model.Account;
+import com.example.casey.donationtracker.Model.Model;
 import com.example.casey.donationtracker.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +28,28 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference myRef = database.getReference("message");
 
         myRef.setValue("Hello, World!");
+
+
+        //TODO: store the users/accounts from firebase into _accounts for permanence
+
+
+         //Attach a listener to read the data at our users reference
+        //this function makes the app crash so far. so i commented it out
+//        myRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                Account acc = dataSnapshot.getValue(Account.class);
+//                Model.getInstance().addAccount(acc);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                Log.d("ERROR", "error getting saved accounts");
+//            }
+//
+//        });
+
+
         configureLoginButton();
         configureRegButton();
 

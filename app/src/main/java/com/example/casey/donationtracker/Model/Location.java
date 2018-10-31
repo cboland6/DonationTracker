@@ -52,6 +52,7 @@ public class Location {
         //constructor found in the Item class
         items.add(i);
         //adds this item to the location's list of items
+
     }
 
 }

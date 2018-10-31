@@ -10,7 +10,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.casey.donationtracker.Model.Category;
-import com.example.casey.donationtracker.Model.Location;
 import com.example.casey.donationtracker.Model.Model;
 import com.example.casey.donationtracker.R;
 
@@ -97,8 +96,9 @@ public class ItemEntryScreen extends AppCompatActivity {
     }
 
     public void onAddButtonPressed(View view) {
-        //required: timestamp, location, value, full description, category
-        boolean fieldsPresent = requiredFieldsPresent(fullDescriptionField, valueField);
+        //required: timestamp, location, value, short description, full description, category
+        Category cat = (Category) categorySpinner.getSelectedItem();
+        boolean fieldsPresent = requiredFieldsPresent(cat, shortDescriptionField, fullDescriptionField, valueField);
 
         if (fieldsPresent) {
             String shortDesc = shortDescriptionField.getText().toString();
@@ -112,9 +112,6 @@ public class ItemEntryScreen extends AppCompatActivity {
             if (AMPMSpinner.getSelectedItem().toString().equals("PM")) {
                 hour += 12;
             }
-            /**
-             * hour needs to be implemented here... should be the value of hour if AM, or hour + 12 if PM
-             */
             int min = Integer.parseInt(minSpinner.getSelectedItem().toString());
 
 
@@ -130,9 +127,11 @@ public class ItemEntryScreen extends AppCompatActivity {
         finish();
     }
 
-    private boolean requiredFieldsPresent(EditText ... editTexts) {
+    private boolean requiredFieldsPresent(Category cat, EditText ... editTexts) {
         boolean fieldsPresent = true;
-
+        if ((cat.toString()).equals("Select Category")) {
+            fieldsPresent = false;
+        }
         for (EditText e: editTexts) {
             if (e.getText().toString().equals("")) {
                 e.setError("This field is required");

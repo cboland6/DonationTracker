@@ -1,6 +1,6 @@
 package com.example.casey.donationtracker.Model;
 
-public enum Category {
+public enum Category { ALL("Select Category"),
     CLOTHING("Clothing"), HAT("Hat"), KITCHEN("Kitchen"), ELECTRONICS("Electronics"),
     HOUSEHOLD("Household"), OTHER("Other");
 

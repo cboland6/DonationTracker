@@ -6,72 +6,46 @@
     android:padding="15dp" >
 
     <TextView
-        android:id="@+id/locListDetailTitle"
+        android:id="@+id/itemListDetail"
         android:layout_width="wrap_content"
         android:textSize="20sp"
         android:textColor="#000"
         android:layout_height="wrap_content"
-
         android:layout_gravity="center_horizontal"
-        android:text="Detailed View"
+        android:text="Item Details"
         />
 
     <TextView
-        android:id="@+id/nameLoc"
+        android:id="@+id/shortDescItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         />
 
     <TextView
-        android:id="@+id/typeLoc"
+        android:id="@+id/fullDescItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         />
 
     <TextView
-        android:id="@+id/longtitude"
+        android:id="@+id/value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         />
 
     <TextView
-        android:id="@+id/latitude"
+        android:id="@+id/category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         />
 
     <TextView
-    android:id="@+id/address"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-
-    />
-
-    <TextView
-        android:id="@+id/phoneNum"
+        android:id="@+id/timeView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         />
-
-    <Button
-        android:id="@+id/viewItemsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:onClick="viewItems"
-        android:text="View Items" />
-
-    <Button
-        android:id="@+id/ItemEntry"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginEnd="230dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="10dp"
-        android:text="Add Item" />
 
 </LinearLayout>

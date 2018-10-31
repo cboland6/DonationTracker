@@ -10,7 +10,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.casey.donationtracker.Model.Category;
-import com.example.casey.donationtracker.Model.Location;
 import com.example.casey.donationtracker.Model.Model;
 import com.example.casey.donationtracker.R;
 
@@ -65,10 +64,6 @@ public class ItemEntryScreen extends AppCompatActivity {
         /**
          * Array Adapters for Spinners
          */
-        ArrayAdapter<Location> locAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Model.getInstance().getLocations());
-        locAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        locationSpinner.setAdapter(locAdapter);
-
         ArrayAdapter<Category> catAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Category.values());
         catAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(catAdapter);
@@ -101,21 +96,48 @@ public class ItemEntryScreen extends AppCompatActivity {
     }
 
     public void onAddButtonPressed(View view) {
-        Location currentLoc = (Location) locationSpinner.getSelectedItem();
-        String shortDesc = shortDescriptionField.getText().toString();
-        String fullDesc = fullDescriptionField.getText().toString();
-        int value = Integer.parseInt(valueField.getText().toString());
-        Category category = (Category) categorySpinner.getSelectedItem();
-        int day = (Integer) daySpinner.getSelectedItem();
-        int month = (Integer) monthSpinner.getSelectedItem();
-        int year = (Integer) yearSpinner.getSelectedItem();
-        int hour = 1;
-        /**
-         * hour needs to be implemented here... should be the value of hour if AM, or hour + 12 if PM
-         */
-        int min = (Integer) minSpinner.getSelectedItem();
+        //required: timestamp, location, value, short description, full description, category
+        Category cat = (Category) categorySpinner.getSelectedItem();
+        boolean fieldsPresent = requiredFieldsPresent(cat, shortDescriptionField, fullDescriptionField, valueField);
+
+        if (fieldsPresent) {
+            String shortDesc = shortDescriptionField.getText().toString();
+            String fullDesc = fullDescriptionField.getText().toString();
+            int value = Integer.parseInt(valueField.getText().toString());
+            Category category = (Category) categorySpinner.getSelectedItem();
+            int day = (Integer) daySpinner.getSelectedItem();
+            int month = (Integer) monthSpinner.getSelectedItem();
+            int year = (Integer) yearSpinner.getSelectedItem();
+            int hour = (Integer) hourSpinner.getSelectedItem();
+            if (AMPMSpinner.getSelectedItem().toString().equals("PM")) {
+                hour += 12;
+            }
+            int min = Integer.parseInt(minSpinner.getSelectedItem().toString());
 
 
-        itemTime = LocalDateTime.of(year,month,day,hour,min);
+            itemTime = LocalDateTime.of(year,month,day,hour,min);
+
+            Model.getInstance().getCurrentLocation().addItem(itemTime, Model.getInstance().getCurrentLocation(), shortDesc, fullDesc, value, category);
+            startActivity(new Intent(ItemEntryScreen.this, LocationListScreen.class));
+            finish();
+        }
+    }
+
+    public void onCancelPressed(View view) {
+        finish();
+    }
+
+    private boolean requiredFieldsPresent(Category cat, EditText ... editTexts) {
+        boolean fieldsPresent = true;
+        if ((cat.toString()).equals("Select Category")) {
+            fieldsPresent = false;
+        }
+        for (EditText e: editTexts) {
+            if (e.getText().toString().equals("")) {
+                e.setError("This field is required");
+                fieldsPresent = false;
+            }
+        }
+        return fieldsPresent;
     }
 }

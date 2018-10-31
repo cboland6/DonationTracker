@@ -11,18 +11,18 @@ public class Item {
     private Category category;
     private String comments;
 
-    public Item(LocalDateTime timeStamp, Location itemLocation, String shortDescription, String fullDescription,
-                int value, Category category) {
+    public Item(LocalDateTime time, Location itemLoc, String shortD, String fullD,
+                int val, Category cat) {
 
-        this.timeStamp = timeStamp;
-        this.itemLocation = itemLocation;
-        this.shortDescription = shortDescription;
-        this.fullDescription = fullDescription;
-        this.value = value;
-        this.category = category;
+        timeStamp = time;
+        itemLocation = itemLoc;
+        shortDescription = shortD;
+        fullDescription = fullD;
+        value = val;
+        category = cat;
     }
 
-    public void setComments(String com) { this.comments = com; }
+    public void setComments(String com) { comments = com; }
     public LocalDateTime getTimeStamp() { return timeStamp; }
     public Location getItemLocation() { return itemLocation; }
     public String getShortDescription() { return shortDescription; }

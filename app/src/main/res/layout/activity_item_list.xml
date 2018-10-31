@@ -12,20 +12,19 @@
     tools:context="com.example.casey.donationtracker.Controllers.LocationListScreen" >
 
     <TextView
-        android:id="@+id/locListTitle"
+        android:id="@+id/itemListTitle"
         android:layout_width="wrap_content"
         android:textSize="20sp"
         android:textColor="#000"
         android:layout_height="wrap_content"
-        android:textAppearance="?attr/textAppearanceListItem"
         android:layout_gravity="center_horizontal"
-        android:text="Locations"
+        android:text="Items"
         />
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recycler_view" >
+        android:id="@+id/recycler_view2" >
     </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

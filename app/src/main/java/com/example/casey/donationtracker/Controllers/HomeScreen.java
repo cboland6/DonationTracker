@@ -30,7 +30,8 @@ public class HomeScreen extends AppCompatActivity {
 
         configureLogOutButton();
         configureLocationsButton();
-        configureAddItemButton();
+        configureItemSearchButton();
+        readSDFile();
     }
 
     private void configureLogOutButton() {
@@ -48,19 +49,18 @@ public class HomeScreen extends AppCompatActivity {
         locationsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readSDFile();
+                //readSDFile();
                 startActivity(new Intent(HomeScreen.this, LocationListScreen.class));
             }
         });
     }
 
-    private void configureAddItemButton() {
-        Button ItemEntry = findViewById(R.id.ItemEntry);
-        ItemEntry.setOnClickListener(new View.OnClickListener() {
+    private void configureItemSearchButton() {
+        Button locationsButton = findViewById(R.id.ItemSearch);
+        locationsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readSDFile();
-                startActivity(new Intent(HomeScreen.this, ItemEntryScreen.class));
+                startActivity(new Intent(HomeScreen.this, ItemSearchScreen.class));
             }
         });
     }

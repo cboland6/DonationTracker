@@ -21,6 +21,8 @@ public class RegScreen extends AppCompatActivity {
     private EditText passwordField;
     private Spinner roleSpinner;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,8 @@ public class RegScreen extends AppCompatActivity {
         usernameField = findViewById(R.id.regUserName);
         passwordField = findViewById(R.id.regPassword);
         roleSpinner = findViewById(R.id.chooseUserType);
+
+
 
         // setup adapter to show possible Account Roles
         ArrayAdapter<AccountRole> roleAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, AccountRole.values());
@@ -78,5 +82,4 @@ public class RegScreen extends AppCompatActivity {
             finish();
         }
     }
-
 }

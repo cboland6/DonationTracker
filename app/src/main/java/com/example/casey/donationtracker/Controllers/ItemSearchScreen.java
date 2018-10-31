@@ -117,7 +117,7 @@ public class ItemSearchScreen extends AppCompatActivity {
     // Begin Printing Items Relevant to Search
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         ArrayList<Item> items;
-        if (!(CategorySpinner.getSelectedItem().equals(""))) {
+        if (nameField.getText().toString().equals("")) {
             items = searchByCategory(new ArrayList<Item>());
         } else {
             items = searchByName(new ArrayList<Item>());

@@ -1,5 +1,6 @@
 package com.example.casey.donationtracker.Controllers;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.casey.donationtracker.Model.Category;
 import com.example.casey.donationtracker.Model.Location;
@@ -49,53 +51,43 @@ public class ItemSearchScreen extends AppCompatActivity {
         CategorySpinner.setAdapter(catAdapter);
 
         configureSearchButton();
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        assert recyclerView != null;
-        recyclerView.setLayoutManager(llm);
-        setupRecyclerView(recyclerView);
+//        LinearLayoutManager llm = new LinearLayoutManager(this);
+//        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+//        assert recyclerView != null;
+////        recyclerView.setLayoutManager(llm);
+////        setupRecyclerView(recyclerView);
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // Begin Printing Items Relevant to Search
-    private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        String catString = (String) CategorySpinner.getSelectedItem();
+    public ArrayList<Item> searchByCategory(ArrayList<Item> items) {
+        Category cat = (Category) CategorySpinner.getSelectedItem();
         String locString = (String) LocationSpinner.getSelectedItem();
         List<Location> locations = Model.getInstance().getLocations();
-        ArrayList<Item> items = new ArrayList<Item>();
+
         if (locString.equals("All Locations")) {
             for (Location temp: locations) {
-                for (Item i : temp.getItems()) {
-                    items.add(i);
-                }
+                items.addAll(Model.getInstance().getMatchingItemsByCategory(temp, cat));
             }
         } else {
             for (Location temp : locations) {
-                if (locString.equals((String) temp.getLocationName())) {
-                    for (Item i : temp.getItems()) {
-                        items.add(i);
-                    }
+                if (locString.equals(temp.getLocationName())) {
+                    items.addAll(Model.getInstance().getMatchingItemsByCategory(temp, cat));
                 }
             }
         }
-        //recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(loc.getItems()));
+        if (items.size() == 0) {
+            Context con = getApplicationContext();
+            CharSequence msg = "No items to show";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(con, msg, duration);
+            toast.show();
+        }
+        return items;
+    }
 
+    // Begin Printing Items Relevant to Search
+    private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
+        ArrayList<Item> items = searchByCategory(new ArrayList<Item>());
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(items));
     }
     public class SimpleItemRecyclerViewAdapter
@@ -163,31 +155,17 @@ public class ItemSearchScreen extends AppCompatActivity {
 
     // End Printing Items Here
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private void configureSearchButton() {
         Button SearchButton = findViewById(R.id.EnterSearch);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        final RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        assert recyclerView != null;
+        recyclerView.setLayoutManager(llm);
+        setupRecyclerView(recyclerView);
         SearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //loc1 = (String) LocationSpinner.getSelectedItem();
-                //cat1 = (String) CategorySpinner.getSelectedItem();
-
+                setupRecyclerView(recyclerView);
                 //This should use the entered information to search items and display them
                 //startActivity(new Intent(ItemSearchScreen.this, MainActivity.class));
             }

@@ -78,19 +78,24 @@ public class ItemSearchScreen extends AppCompatActivity {
         String catString = (String) CategorySpinner.getSelectedItem();
         String locString = (String) LocationSpinner.getSelectedItem();
         List<Location> locations = Model.getInstance().getLocations();
-        Location loc = locations.get(0);
-        ArrayList<Item> items;
+        ArrayList<Item> items = new ArrayList<Item>();
         if (locString.equals("All Locations")) {
-            loc = locations.get(0);
+            for (Location temp: locations) {
+                for (Item i : temp.getItems()) {
+                    items.add(i);
+                }
+            }
         } else {
-            for(Location temp : locations) {
+            for (Location temp : locations) {
                 if (locString.equals((String) temp.getLocationName())) {
-                    loc = temp;
+                    for (Item i : temp.getItems()) {
+                        items.add(i);
+                    }
                 }
             }
         }
-        items = loc.getItems();
         //recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(loc.getItems()));
+
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(items));
     }
     public class SimpleItemRecyclerViewAdapter
@@ -183,8 +188,8 @@ public class ItemSearchScreen extends AppCompatActivity {
                 //loc1 = (String) LocationSpinner.getSelectedItem();
                 //cat1 = (String) CategorySpinner.getSelectedItem();
 
-                // This should use the entered information to search items and display them
-                //startActivity(new Intent(HomeScreen.this, MainActivity.class));
+                //This should use the entered information to search items and display them
+                //startActivity(new Intent(ItemSearchScreen.this, MainActivity.class));
             }
         });
     }

@@ -25,6 +25,7 @@
         <activity android:name=".Controllers.ItemListScreen" />
         <activity android:name=".Controllers.DetailItem" />
         <activity android:name=".Controllers.ItemEntryScreen" />
+        <activity android:name=".Controllers.ItemSearchScreen" />
     </application>
 
 </manifest>

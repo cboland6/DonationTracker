@@ -10,7 +10,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.casey.donationtracker.Model.Category;
-import com.example.casey.donationtracker.Model.Location;
 import com.example.casey.donationtracker.Model.Model;
 import com.example.casey.donationtracker.R;
 
@@ -98,7 +97,7 @@ public class ItemEntryScreen extends AppCompatActivity {
 
     public void onAddButtonPressed(View view) {
         //required: timestamp, location, value, full description, category
-        boolean fieldsPresent = requiredFieldsPresent(fullDescriptionField, valueField);
+        boolean fieldsPresent = requiredFieldsPresent(shortDescriptionField, fullDescriptionField, valueField);
 
         if (fieldsPresent) {
             String shortDesc = shortDescriptionField.getText().toString();
@@ -112,9 +111,6 @@ public class ItemEntryScreen extends AppCompatActivity {
             if (AMPMSpinner.getSelectedItem().toString().equals("PM")) {
                 hour += 12;
             }
-            /**
-             * hour needs to be implemented here... should be the value of hour if AM, or hour + 12 if PM
-             */
             int min = Integer.parseInt(minSpinner.getSelectedItem().toString());
 
 

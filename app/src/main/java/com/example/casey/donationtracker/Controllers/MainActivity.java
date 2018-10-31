@@ -22,6 +22,28 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference myRef = database.getReference("message");
 
         myRef.setValue("Hello, World!");
+
+
+        //TODO: store the users/accounts from firebase into _accounts for permanence
+
+
+         //Attach a listener to read the data at our users reference
+        //this function makes the app crash so far. so i commented it out
+//        myRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                Account acc = dataSnapshot.getValue(Account.class);
+//                Model.getInstance().addAccount(acc);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                Log.d("ERROR", "error getting saved accounts");
+//            }
+//
+//        });
+
+
         configureLoginButton();
         configureRegButton();
 

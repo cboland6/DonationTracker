@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ public class ItemSearchScreen extends AppCompatActivity {
 
     private Spinner LocationSpinner;
     private Spinner CategorySpinner;
+    private EditText nameField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class ItemSearchScreen extends AppCompatActivity {
         setContentView(R.layout.activity_item_search_screen);
         LocationSpinner = findViewById(R.id.LocationForSearch);
         CategorySpinner = findViewById(R.id.CategoryForSearch);
+        nameField = findViewById(R.id.editText3);
         ArrayList<String> locations = getLocationNameList();
 
         /**
@@ -85,10 +88,42 @@ public class ItemSearchScreen extends AppCompatActivity {
         return items;
     }
 
+    public ArrayList<Item> searchByName(ArrayList<Item> items) {
+        String name = (String) nameField.getText().toString();
+        String locString = (String) LocationSpinner.getSelectedItem();
+        List<Location> locations = Model.getInstance().getLocations();
+
+        if (locString.equals("All Locations")) {
+            for (Location temp: locations) {
+                items.addAll(Model.getInstance().getMatchingItemsByName(temp, name));
+            }
+        } else {
+            for (Location temp : locations) {
+                if (locString.equals(temp.getLocationName())) {
+                    items.addAll(Model.getInstance().getMatchingItemsByName(temp, name));
+                }
+            }
+        }
+        if (items.size() == 0) {
+            Context con = getApplicationContext();
+            CharSequence msg = "No items to show";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(con, msg, duration);
+            toast.show();
+        }
+        return items;
+    }
+
     // Begin Printing Items Relevant to Search
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        ArrayList<Item> items = searchByCategory(new ArrayList<Item>());
+        ArrayList<Item> items;
+        if (!(CategorySpinner.getSelectedItem().equals(""))) {
+            items = searchByCategory(new ArrayList<Item>());
+        } else {
+            items = searchByName(new ArrayList<Item>());
+        }
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(items));
+
     }
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {

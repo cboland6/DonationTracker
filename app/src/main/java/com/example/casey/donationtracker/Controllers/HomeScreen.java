@@ -8,16 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.casey.donationtracker.Model.Location;
 import com.example.casey.donationtracker.Model.Model;
 import com.example.casey.donationtracker.R;
+import com.example.casey.donationtracker.Database.Location;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
 
 public class HomeScreen extends AppCompatActivity {
     public static String TAG = "MY_APP";
@@ -31,7 +30,9 @@ public class HomeScreen extends AppCompatActivity {
         configureLogOutButton();
         configureLocationsButton();
         configureItemSearchButton();
+
         readSDFile();
+
     }
 
     private void configureLogOutButton() {
@@ -71,8 +72,6 @@ public class HomeScreen extends AppCompatActivity {
      */
     private void readSDFile() {
         //must clear the locations first
-        Model.getInstance().clearLocations();
-        List<Location> locations = Model.getInstance().getLocations();
         try {
             InputStream IS = getResources().openRawResource(R.raw.locationdata);
             if (IS == null) {
@@ -85,7 +84,7 @@ public class HomeScreen extends AppCompatActivity {
                 while ((line = BR.readLine()) != null) {
                     Log.d(HomeScreen.TAG, line);
                     String[] tokens = line.split(",");
-                    Model.getInstance().addLocation(new Location(tokens[1], tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], tokens[7], tokens[8], tokens[9], tokens[10]));
+                    Model.getInstance().addLocation(new Location(tokens[0], tokens[1], tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], tokens[7], tokens[8], tokens[9], tokens[10]));
                 }
                 BR.close();
             }
@@ -93,4 +92,6 @@ public class HomeScreen extends AppCompatActivity {
             Log.e(HomeScreen.TAG, "error reading assets", e);
         }
     }
+
+
 }

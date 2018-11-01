@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.casey.donationtracker.Model.Location;
+import com.example.casey.donationtracker.Database.Location;
 import com.example.casey.donationtracker.Model.Model;
 import com.example.casey.donationtracker.R;
 
@@ -56,19 +56,19 @@ public class LocationListScreen extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.mItem = mValues.get(position);
-            holder.mIdView.setText(mValues.get(position).getLocationName());
+            holder.mIdView.setText(mValues.get(position).getName());
             holder.mAddress.setText(mValues.get(position).getAddress());
 
             holder.parentLayout.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     Model.getInstance().setCurrentLocation(mValues.get(position));
                     Intent intent = new Intent(LocationListScreen.this, DetailLocation.class);
-                    intent.putExtra("LocationName", mValues.get(position).getLocationName());
-                    intent.putExtra("LocationType", mValues.get(position).getLocationType());
+                    intent.putExtra("LocationName", mValues.get(position).getName());
+                    intent.putExtra("LocationType", mValues.get(position).getType());
                     intent.putExtra("Longitude", mValues.get(position).getLongitude());
                     intent.putExtra("Latitude", mValues.get(position).getLatitude());
                     intent.putExtra("Address", mValues.get(position).getAddress());
-                    intent.putExtra("PhoneNumber", mValues.get(position).getLocationPhone());
+                    intent.putExtra("PhoneNumber", mValues.get(position).getPhone());
                     LocationListScreen.this.startActivity(intent);
                 }
             });

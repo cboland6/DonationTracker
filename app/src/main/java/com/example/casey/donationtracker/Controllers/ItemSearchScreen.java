@@ -11,15 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.casey.donationtracker.Database.Item;
 import com.example.casey.donationtracker.Model.Category;
-import com.example.casey.donationtracker.Model.Location;
 import com.example.casey.donationtracker.Model.Model;
-import com.example.casey.donationtracker.Model.Item;
 import com.example.casey.donationtracker.R;
+import com.example.casey.donationtracker.Database.Location;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class ItemSearchScreen extends AppCompatActivity {
 
     private Spinner LocationSpinner;
     private Spinner CategorySpinner;
+    private EditText nameField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +37,17 @@ public class ItemSearchScreen extends AppCompatActivity {
         setContentView(R.layout.activity_item_search_screen);
         LocationSpinner = findViewById(R.id.LocationForSearch);
         CategorySpinner = findViewById(R.id.CategoryForSearch);
-        ArrayList<String> locations = getLocationNameList();
+        ArrayList<String> locations = (ArrayList) Model.getInstance().getLocations();
 
         /**
          * Array Adapters for Spinners
          */
-        ArrayAdapter<String> locAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, locations);
+        ArrayAdapter<Location> locAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, locations);
         locAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         LocationSpinner.setAdapter(locAdapter);
 
-        ArrayAdapter<String> catAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Category.values());
+
+        ArrayAdapter<Category> catAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Category.values());
         catAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         CategorySpinner.setAdapter(catAdapter);
 
@@ -75,25 +78,14 @@ public class ItemSearchScreen extends AppCompatActivity {
 
     // Begin Printing Items Relevant to Search
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        String catString = (String) CategorySpinner.getSelectedItem();
-        String locString = (String) LocationSpinner.getSelectedItem();
-        List<Location> locations = Model.getInstance().getLocations();
-        ArrayList<Item> items = new ArrayList<Item>();
-        if (locString.equals("All Locations")) {
-            for (Location temp: locations) {
-                for (Item i : temp.getItems()) {
-                    items.add(i);
-                }
-            }
-        } else {
-            for (Location temp : locations) {
-                if (locString.equals((String) temp.getLocationName())) {
-                    for (Item i : temp.getItems()) {
-                        items.add(i);
-                    }
-                }
-            }
+        Category cat = (Category) CategorySpinner.getSelectedItem();
+        Location loc = (Location) LocationSpinner.getSelectedItem();
+        String phrase = (String) nameField.getText().toString();
+        List<Item> items = new ArrayList<Item>();
+        if (loc.getName().equals("All Locations")) {
+            loc = null;
         }
+        items = Model.getInstance().getMatchingItems(loc, cat, phrase);
         //recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(loc.getItems()));
 
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(items));
@@ -103,7 +95,7 @@ public class ItemSearchScreen extends AppCompatActivity {
 
         private final List<Item> mItems;
 
-        public SimpleItemRecyclerViewAdapter(ArrayList<Item> items) {
+        public SimpleItemRecyclerViewAdapter(List<Item> items) {
             mItems = items;
         }
 
@@ -194,15 +186,5 @@ public class ItemSearchScreen extends AppCompatActivity {
         });
     }
 
-    public ArrayList<String> getLocationNameList() {
-        Model model = Model.getInstance();
-        List<Location> locations = model.getLocations();
-        ArrayList<String> locNames = new ArrayList<>();
-        locNames.add("All Locations");
-        for (Location temp : locations) {
-            locNames.add(temp.getLocationName());
-        }
-        return locNames;
-    }
 
 }

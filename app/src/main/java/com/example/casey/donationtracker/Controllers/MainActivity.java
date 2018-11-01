@@ -7,14 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.casey.donationtracker.Model.Account;
 import com.example.casey.donationtracker.Model.Model;
 import com.example.casey.donationtracker.R;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,11 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
-
-        myRef.setValue("Hello, World!");
+        Model.getInstance().configureDatabase(getApplicationContext());
 
 
         //TODO: store the users/accounts from firebase into _accounts for permanence

@@ -31,7 +31,9 @@ public class HomeScreen extends AppCompatActivity {
         configureLocationsButton();
         configureItemSearchButton();
 
-        readSDFile();
+        if (Model.getInstance().getLocationCount() <= 0) {
+            readSDFile();
+        }
 
     }
 

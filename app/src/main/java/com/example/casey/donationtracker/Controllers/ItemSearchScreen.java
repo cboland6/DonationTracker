@@ -40,7 +40,8 @@ public class ItemSearchScreen extends AppCompatActivity {
         LocationSpinner = findViewById(R.id.LocationForSearch);
         CategorySpinner = findViewById(R.id.CategoryForSearch);
 
-        ArrayList<String> locations = (ArrayList) Model.getInstance().getLocations();
+        ArrayList<Location> locations = (ArrayList) Model.getInstance().getLocations();
+        locations.add(0, Model.getInstance().dummyLocation);
         nameField = findViewById(R.id.editText3);
 
         /**
@@ -85,8 +86,11 @@ public class ItemSearchScreen extends AppCompatActivity {
         Location loc = (Location) LocationSpinner.getSelectedItem();
         String phrase = (String) nameField.getText().toString();
         List<Item> items = new ArrayList<Item>();
-        if (loc.getName().equals("All Locations")) {
+        if (loc.getName().equals("Any")) {
             loc = null;
+        }
+        if (cat.equals(Category.ALL)) {
+            cat = null;
         }
         if (phrase == "") {
             phrase = null;
@@ -173,7 +177,7 @@ public class ItemSearchScreen extends AppCompatActivity {
         final RecyclerView recyclerView = findViewById(R.id.recycler_view);
         assert recyclerView != null;
         recyclerView.setLayoutManager(llm);
-        setupRecyclerView(recyclerView);
+        //setupRecyclerView(recyclerView);
         SearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

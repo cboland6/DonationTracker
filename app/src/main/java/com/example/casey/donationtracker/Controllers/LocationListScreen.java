@@ -69,6 +69,7 @@ public class LocationListScreen extends AppCompatActivity {
                     intent.putExtra("Latitude", mValues.get(position).getLatitude());
                     intent.putExtra("Address", mValues.get(position).getAddress());
                     intent.putExtra("PhoneNumber", mValues.get(position).getPhone());
+                    intent.putExtra("UniqueKey", mValues.get(position).getUniqueKey());
                     LocationListScreen.this.startActivity(intent);
                 }
             });

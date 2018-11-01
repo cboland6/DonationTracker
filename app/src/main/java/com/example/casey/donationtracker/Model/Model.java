@@ -28,6 +28,9 @@ public class Model {
     //the selected location to view items of
     private Location _currentLocation;
 
+    // Used for searching so "Any Location" is an option
+    public static final Location dummyLocation = new Location("0", "Any", "", "", "", "", "", "", "", "", "");
+
     AppDatabase db;
 
     public void configureDatabase(Context context) {
@@ -89,7 +92,7 @@ public class Model {
 
 
     /** Methods involving locations */
-    public void addLocation(com.example.casey.donationtracker.Database.Location loc) {
+    public void addLocation(Location loc) {
         db.locationDao().insert(loc);
     }
 
@@ -111,10 +114,15 @@ public class Model {
     public void addItem(LocalDateTime time, Location itemLoc, String shortD, String fullD,
                         int val, Category cat) {
         Item item = new Item(time, itemLoc.getUniqueKey(), shortD, fullD, val, cat);
+        db.itemDao().insert(item);
     }
 
     public List<Item> getItems() {
         return db.itemDao().getAll();
+    }
+
+    public List<Item> getItemsAtCurrentLocation() {
+        return db.itemDao().getItemsAtLocation(_currentLocation.getUniqueKey());
     }
 
     public List<Item> getMatchingItems(Location loc, Category cat, String phrase) {

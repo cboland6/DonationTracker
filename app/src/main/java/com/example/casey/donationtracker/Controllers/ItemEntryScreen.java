@@ -9,11 +9,14 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.casey.donationtracker.Database.Location;
 import com.example.casey.donationtracker.Model.Category;
 import com.example.casey.donationtracker.Model.Model;
 import com.example.casey.donationtracker.R;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ItemEntryScreen extends AppCompatActivity {
 
@@ -59,14 +62,19 @@ public class ItemEntryScreen extends AppCompatActivity {
         Integer[] days = new Integer[] {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31};
         Integer[] years = new Integer[] {2015,2016,2017,2018,2019,2020};
 
-
+        ArrayList<String> locations = (ArrayList) Model.getInstance().getLocations();
 
         /**
          * Array Adapters for Spinners
          */
-        ArrayAdapter<Category> catAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Category.values());
+        // use copy of range for Category spinner to exclude the possible ALL category enum value when adding an item
+        ArrayAdapter<Category> catAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Arrays.copyOfRange(Category.values(), 1, Category.values().length));
         catAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(catAdapter);
+
+        ArrayAdapter<Location> locAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, locations);
+        locAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        locationSpinner.setAdapter(locAdapter);
 
         ArrayAdapter<Integer> hourAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, hours);
         hourAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -97,6 +105,7 @@ public class ItemEntryScreen extends AppCompatActivity {
 
     public void onAddButtonPressed(View view) {
         //required: timestamp, location, value, short description, full description, category
+        Location loc = (Location) locationSpinner.getSelectedItem();
         Category cat = (Category) categorySpinner.getSelectedItem();
         boolean fieldsPresent = requiredFieldsPresent(cat, shortDescriptionField, fullDescriptionField, valueField);
 
@@ -117,7 +126,7 @@ public class ItemEntryScreen extends AppCompatActivity {
 
             itemTime = LocalDateTime.of(year,month,day,hour,min);
 
-            Model.getInstance().addItem(itemTime, Model.getInstance().getCurrentLocation(), shortDesc, fullDesc, value, category);
+            Model.getInstance().addItem(itemTime, loc, shortDesc, fullDesc, value, category);
             startActivity(new Intent(ItemEntryScreen.this, LocationListScreen.class));
             finish();
         }

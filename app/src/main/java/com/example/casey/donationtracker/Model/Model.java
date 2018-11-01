@@ -1,7 +1,19 @@
 package com.example.casey.donationtracker.Model;
 
-import java.util.List;
+import android.arch.persistence.room.Room;
+import android.content.Context;
+import android.database.sqlite.SQLiteConstraintException;
+import android.util.Log;
+
+import com.example.casey.donationtracker.Database.Account;
+import com.example.casey.donationtracker.Database.AppDatabase;
+import com.example.casey.donationtracker.Database.ItemDao;
+import com.example.casey.donationtracker.Database.Location;
+import com.example.casey.donationtracker.Database.Item;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Model {
 
@@ -10,43 +22,49 @@ public class Model {
     private static final Model _instance = new Model();
     public static Model getInstance() { return _instance; }
 
-
-    /** list of all accounts */
-    private List<Account> _accounts;
-    private List<Location> _locations;
-
-
-    // the current account using the app
+    // the current user using the app
     private Account _currentAccount;
 
-    private Model() {
-        _accounts = new ArrayList<>();
-        _locations = new ArrayList<>();
+    //the selected location to view items of
+    private Location _currentLocation;
+
+    // Used for searching so "Any Location" is an option
+    public static final Location dummyLocation = new Location("0", "Any", "", "", "", "", "", "", "", "", "");
+
+    AppDatabase db;
+
+    public void configureDatabase(Context context) {
+        db = Room.databaseBuilder(context,
+                AppDatabase.class, "database-name")
+                .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
+                .build();
     }
 
-    public void addLocation(Location loc) { _locations.add(loc); }
-
-    public List<Location> getLocations() { return _locations; }
-
-    public void clearLocations() { this._locations = new ArrayList<>(); }
-
-    public boolean addAccount(Account account) {
-        for (Account c : _accounts ) {
-            if (c.equals(account)) return false;
+    /** Methods involving accounts */
+    public boolean addAccount(String username, String password, AccountRole role) {
+        Account u = new Account(username, password, role);
+        // Check if the username is already taken, will throw constraint exception if
+        // the username already exists, will successfully add the account if the username is new
+        try {
+            db.userDao().insert(u);
+        } catch (SQLiteConstraintException e) {
+            return false;
         }
-        _accounts.add(account);
         return true;
     }
 
-    public Account findAccountByUsername(String username) {
-        for (Account a : _accounts) {
-            if (username.equals(a.getUsername())) {
-                return a;
-            }
-        }
-        return null;
+    public Account getCurrentAccount() {
+        return _currentAccount;
     }
 
+    public List<Account> getUsers() {
+        return db.userDao().getAll();
+    }
+
+    public int getLocationCount() {
+        return db.locationDao().countLocations();
+    }
 
     /**
      * Check the passed in login credentials against known account credentials
@@ -55,8 +73,8 @@ public class Model {
      * @return true if the credentials are valid
      */
     public boolean login(String username, String password) {
-        Account account = findAccountByUsername(username);
-        if (account == null || !account.validatePassword(password)) {
+        Account account = db.userDao().findByName(username);
+        if (account == null || !validatePassword(account, password)) {
             return false;
         } else {
             _currentAccount = account;
@@ -64,8 +82,68 @@ public class Model {
         }
     }
 
+    private boolean validatePassword(Account account, String password) {
+        if (account != null) {
+            return account.getPassword().equals(password);
+        } else {
+            return false;
+        }
+    }
+
+
+    /** Methods involving locations */
+    public void addLocation(Location loc) {
+        db.locationDao().insert(loc);
+    }
+
+    public List<Location> getLocations() { return db.locationDao().getAll(); }
+
+    public Location getCurrentLocation() {
+        return _currentLocation;
+    }
+
+    public void setCurrentLocation(Location loc) {
+        this._currentLocation = loc;
+    }
+
     
-    public Account getCurrentAccount() {
-        return _currentAccount;
+
+
+    /** Methods involving items */
+
+    public void addItem(LocalDateTime time, Location itemLoc, String shortD, String fullD,
+                        int val, Category cat) {
+        Item item = new Item(time, itemLoc.getUniqueKey(), shortD, fullD, val, cat);
+        db.itemDao().insert(item);
+    }
+
+    public List<Item> getItems() {
+        return db.itemDao().getAll();
+    }
+
+    public List<Item> getItemsAtCurrentLocation() {
+        return db.itemDao().getItemsAtLocation(_currentLocation.getUniqueKey());
+    }
+
+    public List<Item> getMatchingItems(Location loc, Category cat, String phrase) {
+        // Will return items matching the parameters
+        ItemDao itemDao = db.itemDao();
+        List<Item> results = new ArrayList<>();
+        if (loc != null && cat != null && phrase != null) {
+            results = itemDao.getItemsAtLocation(loc.getUniqueKey(), cat, phrase);
+        } else if (loc != null && cat != null) {
+            results = itemDao.getItemsAtLocation(loc.getUniqueKey(), cat);
+        } else if (loc != null && phrase != null) {
+            results = itemDao.getItemsAtLocation(loc.getUniqueKey(), phrase);
+        } else if (loc != null) {
+            results = itemDao.getItemsAtLocation(loc.getUniqueKey());
+        } else if (cat != null && phrase != null) {
+            results = itemDao.getItemsWithCategory(cat, phrase);
+        } else if (cat != null) {
+            results = itemDao.getItemsWithCategory(cat);
+        } else if (phrase != null) {
+            results = itemDao.getItemsWithPhrase(phrase);
+        }
+        return results;
     }
 }

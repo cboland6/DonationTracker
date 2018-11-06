@@ -12,9 +12,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.casey.donationtracker.Model.Item;
 import com.example.casey.donationtracker.Model.Model;
 import com.example.casey.donationtracker.R;
+import com.example.casey.donationtracker.Database.Item;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class ItemListScreen extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(Model.getInstance().getCurrentLocation().getItems()));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(Model.getInstance().getItemsAtCurrentLocation()));
     }
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {

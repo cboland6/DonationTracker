@@ -18,11 +18,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.casey.donationtracker.Database.Item;
 import com.example.casey.donationtracker.Model.Category;
-import com.example.casey.donationtracker.Model.Location;
 import com.example.casey.donationtracker.Model.Model;
-import com.example.casey.donationtracker.Model.Item;
 import com.example.casey.donationtracker.R;
+import com.example.casey.donationtracker.Database.Location;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -39,17 +39,20 @@ public class ItemSearchScreen extends AppCompatActivity {
         setContentView(R.layout.activity_item_search_screen);
         LocationSpinner = findViewById(R.id.LocationForSearch);
         CategorySpinner = findViewById(R.id.CategoryForSearch);
+
+        ArrayList<Location> locations = (ArrayList) Model.getInstance().getLocations();
+        locations.add(0, Model.getInstance().dummyLocation);
         nameField = findViewById(R.id.editText3);
-        ArrayList<String> locations = getLocationNameList();
 
         /**
          * Array Adapters for Spinners
          */
-        ArrayAdapter<String> locAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, locations);
+        ArrayAdapter<Location> locAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, locations);
         locAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         LocationSpinner.setAdapter(locAdapter);
 
-        ArrayAdapter<String> catAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Category.values());
+
+        ArrayAdapter<Category> catAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Category.values());
         catAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         CategorySpinner.setAdapter(catAdapter);
 
@@ -62,65 +65,43 @@ public class ItemSearchScreen extends AppCompatActivity {
     }
 
 
-    public ArrayList<Item> searchByCategory(ArrayList<Item> items) {
-        Category cat = (Category) CategorySpinner.getSelectedItem();
-        String locString = (String) LocationSpinner.getSelectedItem();
-        List<Location> locations = Model.getInstance().getLocations();
 
-        if (locString.equals("All Locations")) {
-            for (Location temp: locations) {
-                items.addAll(Model.getInstance().getMatchingItemsByCategory(temp, cat));
-            }
-        } else {
-            for (Location temp : locations) {
-                if (locString.equals(temp.getLocationName())) {
-                    items.addAll(Model.getInstance().getMatchingItemsByCategory(temp, cat));
-                }
-            }
-        }
-        if (items.size() == 0) {
-            Context con = getApplicationContext();
-            CharSequence msg = "No items to show";
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(con, msg, duration);
-            toast.show();
-        }
-        return items;
-    }
 
-    public ArrayList<Item> searchByName(ArrayList<Item> items) {
-        String name = (String) nameField.getText().toString();
-        String locString = (String) LocationSpinner.getSelectedItem();
-        List<Location> locations = Model.getInstance().getLocations();
 
-        if (locString.equals("All Locations")) {
-            for (Location temp: locations) {
-                items.addAll(Model.getInstance().getMatchingItemsByName(temp, name));
-            }
-        } else {
-            for (Location temp : locations) {
-                if (locString.equals(temp.getLocationName())) {
-                    items.addAll(Model.getInstance().getMatchingItemsByName(temp, name));
-                }
-            }
-        }
-        if (items.size() == 0) {
-            Context con = getApplicationContext();
-            CharSequence msg = "No items to show";
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(con, msg, duration);
-            toast.show();
-        }
-        return items;
-    }
+
+
+
+
+
+
+
+
+
+
+
 
     // Begin Printing Items Relevant to Search
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        ArrayList<Item> items;
-        if (nameField.getText().toString().equals("")) {
-            items = searchByCategory(new ArrayList<Item>());
-        } else {
-            items = searchByName(new ArrayList<Item>());
+        Category cat = (Category) CategorySpinner.getSelectedItem();
+        Location loc = (Location) LocationSpinner.getSelectedItem();
+        String phrase = (String) nameField.getText().toString();
+        List<Item> items = new ArrayList<Item>();
+        if (loc.getName().equals("Any")) {
+            loc = null;
+        }
+        if (cat.equals(Category.ALL)) {
+            cat = null;
+        }
+        if (phrase == "") {
+            phrase = null;
+        }
+        items = Model.getInstance().getMatchingItems(loc, cat, phrase);
+        if (items.size() == 0) {
+            Context con = getApplicationContext();
+            CharSequence msg = "No items to show";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(con, msg, duration);
+            toast.show();
         }
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(items));
 
@@ -130,7 +111,7 @@ public class ItemSearchScreen extends AppCompatActivity {
 
         private final List<Item> mItems;
 
-        public SimpleItemRecyclerViewAdapter(ArrayList<Item> items) {
+        public SimpleItemRecyclerViewAdapter(List<Item> items) {
             mItems = items;
         }
 
@@ -196,7 +177,7 @@ public class ItemSearchScreen extends AppCompatActivity {
         final RecyclerView recyclerView = findViewById(R.id.recycler_view);
         assert recyclerView != null;
         recyclerView.setLayoutManager(llm);
-        setupRecyclerView(recyclerView);
+        //setupRecyclerView(recyclerView);
         SearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -207,15 +188,5 @@ public class ItemSearchScreen extends AppCompatActivity {
         });
     }
 
-    public ArrayList<String> getLocationNameList() {
-        Model model = Model.getInstance();
-        List<Location> locations = model.getLocations();
-        ArrayList<String> locNames = new ArrayList<>();
-        locNames.add("All Locations");
-        for (Location temp : locations) {
-            locNames.add(temp.getLocationName());
-        }
-        return locNames;
-    }
 
 }

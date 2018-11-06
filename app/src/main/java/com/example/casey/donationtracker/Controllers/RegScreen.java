@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.casey.donationtracker.Model.Account;
 import com.example.casey.donationtracker.Model.AccountRole;
 import com.example.casey.donationtracker.Model.Model;
 import com.example.casey.donationtracker.R;
@@ -77,9 +76,12 @@ public class RegScreen extends AppCompatActivity {
             passwordDialog();
 
         else {
-            Account newAccount = new Account(username, password, accountRole);
-            model.addAccount(newAccount);
-            finish();
+            boolean success = model.addAccount(username, password, accountRole);
+            if (!success) {
+                usernameField.setError("Username is taken");
+            } else {
+                finish();
+            }
         }
     }
 }

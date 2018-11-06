@@ -21,6 +21,14 @@
         android:text="Locations"
         />
 
+    <Button
+        android:id="@+id/mapButton"
+        android:layout_width="75sp"
+        android:layout_height="40sp"
+        android:layout_gravity="center_horizontal"
+        android:text="Map"
+        android:onClick="onMapPress" />
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

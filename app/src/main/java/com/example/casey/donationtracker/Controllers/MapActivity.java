@@ -104,6 +104,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
     }
 
+    /**
+     * Adds the location markers to the map
+     */
     public void addLocationMarkers() {
         locations = model.getLocations();
 
@@ -165,7 +168,5 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             // TODO Auto-generated method stub
             return null;
         }
-
     }
-
 }

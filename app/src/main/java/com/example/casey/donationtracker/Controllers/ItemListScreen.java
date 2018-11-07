@@ -35,6 +35,7 @@ public class ItemListScreen extends AppCompatActivity {
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(Model.getInstance().getItemsAtCurrentLocation()));
     }
+
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
@@ -82,6 +83,10 @@ public class ItemListScreen extends AppCompatActivity {
             TextView mCatView;
             LinearLayout parentLayout;
 
+            /**
+             * Constructor for the ViewHolder class. Initializes a ViewHolder with view
+             * @param view The view that will be set in ViewHolder
+             */
             public ViewHolder(View view) {
                 super(view);
                 mView = view;

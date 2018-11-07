@@ -34,6 +34,10 @@ public class LocationListScreen extends AppCompatActivity {
         setupRecyclerView(recyclerView);
     }
 
+    /**
+     * Changes the activity when the map button is pressed on the current view
+     * @param view The view that contains the map button
+     */
     public void onMapPress(View view) {
         startActivity(new Intent(LocationListScreen.this, MapActivity.class));
         finish();
@@ -48,6 +52,10 @@ public class LocationListScreen extends AppCompatActivity {
 
         private final List<Location> mValues;
 
+        /**
+         * Constructor that initializes a SimpleItemRecyclerViewAdapter with items
+         * @param items Array list of locations
+         */
         public SimpleItemRecyclerViewAdapter(List<Location> items) {
             mValues = items;
         }
@@ -93,6 +101,10 @@ public class LocationListScreen extends AppCompatActivity {
             Location mItem;
             LinearLayout parentLayout;
 
+            /**
+             * Constructor that initializes ViewHolder with view
+             * @param view The view that will initialize the ViewHolder
+             */
             public ViewHolder(View view) {
                 super(view);
                 mView = view;

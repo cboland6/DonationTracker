@@ -88,52 +88,92 @@ public class Item {
 
     /**
      * setter for location key
-     * @param locationKey
+     * @param locationKey the new location key
      */
     public void setLocationKey(@NonNull String locationKey) {
         this.locationKey = locationKey;
     }
 
+    /**
+     * getter for short description
+     * @return the item's short description
+     */
     @NonNull
     public String getShortDescription() {
         return shortDescription;
     }
 
+    /**
+     * setter for short description
+     * @param shortDescription the new short description
+     */
     public void setShortDescription(@NonNull String shortDescription) {
         this.shortDescription = shortDescription;
     }
 
+    /**
+     * getter for full description
+     * @return the item's full description
+     */
     @NonNull
     public String getFullDescription() {
         return fullDescription;
     }
 
+    /**
+     * setter for full description
+     * @param fullDescription the new full description
+     */
     public void setFullDescription(@NonNull String fullDescription) {
         this.fullDescription = fullDescription;
     }
 
+    /**
+     * getter for value
+     * @return the item's value
+     */
     @NonNull
     public int getValue() {
         return value;
     }
 
+    /**
+     * setter for value
+     * @param value the new value
+     */
     public void setValue(@NonNull int value) {
         this.value = value;
     }
 
+    /**
+     * getter for category
+     * @return the item's category
+     */
     @NonNull
     public Category getCategory() {
         return category;
     }
 
+    /**
+     * setter for category
+     * @param category the new category
+     */
     public void setCategory(@NonNull Category category) {
         this.category = category;
     }
 
+    /**
+     * getter for comments
+     * @return the item's comments
+     */
     public String getComments() {
         return comments;
     }
 
+    /**
+     * setter for comments
+     * @param comments the new comments
+     */
     public void setComments(String comments) {
         this.comments = comments;
     }

@@ -12,5 +12,5 @@
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
         android:textSize="25sp"
-        android:text="Please enter a password" />
+        android:text="@string/please_enter_a_password" />
 </LinearLayout>

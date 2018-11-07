@@ -45,7 +45,7 @@ public class DetailLocation extends AppCompatActivity {
         TextView locTyp = findViewById(R.id.typeLoc);
         locTyp.setText(loTy);
 
-        TextView longit = findViewById(R.id.longtitude);
+        TextView longit = findViewById(R.id.longitude);
         longit.setText(longi);
 
         TextView latit = findViewById(R.id.latitude);
@@ -58,6 +58,10 @@ public class DetailLocation extends AppCompatActivity {
         phone.setText(pho);
     }
 
+    /**
+     * Changes the view from the current view to the ItemListScreen view
+     * @param view The view that will have the locations displayed on
+     */
     public void viewItems(View view) {
         startActivity(new Intent(DetailLocation.this, ItemListScreen.class));
         finish();

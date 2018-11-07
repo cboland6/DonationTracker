@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.example.casey.donationtracker.Model.AccountRole;
 import com.example.casey.donationtracker.Model.Model;
@@ -19,7 +18,6 @@ public class RegScreen extends AppCompatActivity {
     private EditText usernameField;
     private EditText passwordField;
     private Spinner roleSpinner;
-
 
 
     @Override
@@ -40,28 +38,32 @@ public class RegScreen extends AppCompatActivity {
         roleSpinner.setAdapter(roleAdapter);
     }
 
-
-    // Error message for username
+    /**
+     * Displays the error message for an empty username field
+     */
     public void usernameDialog() {
         AlertDialog.Builder userBuilder = new AlertDialog.Builder(RegScreen.this);
         View userView = getLayoutInflater().inflate(R.layout.dialog_user, null);
-        TextView mUserText = userView.findViewById(R.id.userText);
 
         userBuilder.setView(userView);
         userBuilder.create().show();
     }
 
-    // Error message for password
+    /**
+     * Displays the error message for an empty password field
+     */
     public void passwordDialog() {
         AlertDialog.Builder passBuilder = new AlertDialog.Builder(RegScreen.this);
         View passView = getLayoutInflater().inflate(R.layout.dialog_pass, null);
-        TextView mPassText = passView.findViewById(R.id.passText);
 
         passBuilder.setView(passView);
         passBuilder.create().show();
     }
 
-    //need register method here
+    /**
+     * Registers the username, password, and account type when the register button is pressed
+     * @param view The view that the register button is on
+     */
     public void onRegisterPressed(View view) {
         Model model = Model.getInstance();
         String username = usernameField.getText().toString();

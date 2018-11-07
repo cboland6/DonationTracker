@@ -43,10 +43,7 @@ public class ItemEntryScreen extends AppCompatActivity {
         setContentView(R.layout.activity_item_entry_screen);
         TextView header = findViewById(R.id.textView6);
         header.setText("Please Enter Item Information Below");
-
-        /*
-         * Grab the dialog widgets so we can get info for later
-         */
+        // Grab the dialog widgets so we can get info for later
         shortDescriptionField = findViewById(R.id.enterBriefDesc);
         fullDescriptionField = findViewById(R.id.enterFullDesc);
         valueField = findViewById(R.id.enterValue);
@@ -67,7 +64,6 @@ public class ItemEntryScreen extends AppCompatActivity {
         Integer[] years = new Integer[] {2015,2016,2017,2018,2019,2020};
 
         ArrayList<String> locations = (ArrayList) Model.getInstance().getLocations();
-
         /*
          * Array Adapters for Spinners
          *use copy of range for Category spinner to exclude the possible ALL category enum value when adding an item
@@ -80,27 +76,27 @@ public class ItemEntryScreen extends AppCompatActivity {
         locAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationSpinner.setAdapter(locAdapter);
 
-        ArrayAdapter<Integer> hourAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, hours);
+        ArrayAdapter<Integer> hourAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, hours);
         hourAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         hourSpinner.setAdapter(hourAdapter);
 
-        ArrayAdapter<String> minAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, minutes);
+        ArrayAdapter<String> minAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, minutes);
         minAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         minSpinner.setAdapter(minAdapter);
 
-        ArrayAdapter<String> ampmAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ampm);
+        ArrayAdapter<String> ampmAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, ampm);
         ampmAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         AMPMSpinner.setAdapter(ampmAdapter);
 
-        ArrayAdapter<Integer> monthAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, months);
+        ArrayAdapter<Integer> monthAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, months);
         monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         monthSpinner.setAdapter(monthAdapter);
 
-        ArrayAdapter<Integer> dayAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, days);
+        ArrayAdapter<Integer> dayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, days);
         dayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         daySpinner.setAdapter(dayAdapter);
 
-        ArrayAdapter<Integer> yearAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, years);
+        ArrayAdapter<Integer> yearAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, years);
         yearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         yearSpinner.setAdapter(yearAdapter);
 
@@ -111,6 +107,10 @@ public class ItemEntryScreen extends AppCompatActivity {
      * @param view is the view
      */
 
+    /**
+     * Reads the information inputted on the current view and stores the items into their designated location
+     * @param view The view that the add button will get the information from
+     */
     public void onAddButtonPressed(View view) {
         //required: timestamp, location, value, short description, full description, category
         Location loc = (Location) locationSpinner.getSelectedItem();
@@ -144,6 +144,10 @@ public class ItemEntryScreen extends AppCompatActivity {
      * @param view is the view
      */
 
+    /**
+     * When the cancel button is pressed in this current view, the activity will finish
+     * @param view The view that the activity will close
+     */
     public void onCancelPressed(View view) {
         finish();
     }

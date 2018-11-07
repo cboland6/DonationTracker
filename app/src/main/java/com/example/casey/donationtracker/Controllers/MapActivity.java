@@ -4,13 +4,11 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.casey.donationtracker.Database.Location;
 import com.example.casey.donationtracker.Model.Model;
@@ -104,6 +102,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
     }
 
+    /**
+     * Adds the location markers to the map
+     */
     public void addLocationMarkers() {
         locations = model.getLocations();
 
@@ -152,9 +153,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         @Override
         public View getInfoContents(Marker marker) {
 
-            TextView tvTitle = ((TextView)myContentsView.findViewById(R.id.title));
+            TextView tvTitle = (myContentsView.findViewById(R.id.title));
             tvTitle.setText(marker.getTitle());
-            TextView tvSnippet = ((TextView)myContentsView.findViewById(R.id.snippet));
+            TextView tvSnippet = (myContentsView.findViewById(R.id.snippet));
             tvSnippet.setText(marker.getSnippet());
 
             return myContentsView;
@@ -165,7 +166,5 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             // TODO Auto-generated method stub
             return null;
         }
-
     }
-
 }

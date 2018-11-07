@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
 
         android:layout_gravity="center_horizontal"
-        android:text="Detailed View"
+        android:text="@string/detailed_view"
         />
 
     <TextView
@@ -31,7 +31,7 @@
         />
 
     <TextView
-        android:id="@+id/longtitude"
+        android:id="@+id/longitude"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:onClick="viewItems"
-        android:text="View Items" />
+        android:text="@string/view_items" />
 
     <Button
         android:id="@+id/ItemEntry"
@@ -72,6 +72,6 @@
         android:layout_marginEnd="230dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="10dp"
-        android:text="Add Item" />
+        android:text="@string/add_item" />
 
 </LinearLayout>

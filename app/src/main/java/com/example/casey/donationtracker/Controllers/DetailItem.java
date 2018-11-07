@@ -49,6 +49,10 @@ public class DetailItem extends AppCompatActivity {
         timeView.setText(time);
     }
 
+    /**
+     * Changes the view from the current view to the ItemListScreen
+     * @param view The view that the items will be listed on
+     */
     public void viewItems(View view) {
         startActivity(new Intent(DetailItem.this, ItemListScreen.class));
         finish();

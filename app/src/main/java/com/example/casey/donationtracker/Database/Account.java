@@ -20,6 +20,9 @@ public class Account {
     @ColumnInfo(name = "role")
     private AccountRole role;
 
+    /**
+     * A constructor for an Account
+     */
     public Account() {
         this("_", null, AccountRole.GENERAL);
     }
@@ -30,27 +33,51 @@ public class Account {
         this.role = role;
     }
 
+    /**
+     * getter for Account's username
+     * @return the username
+     */
     @NonNull
     public String getUsername() {
         return username;
     }
 
+    /**
+     * getter for password
+     * @return the Account's password
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * getter for Role
+     * @return the Account's role
+     */
     public AccountRole getRole() {
         return role;
     }
 
+    /** setter for username
+     *
+     * @param username the new username
+     */
     public void setUsername(@NonNull String username) {
         this.username = username;
     }
 
+    /**
+     * setter for password
+     * @param password the new password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /** setter for Role
+     *
+     * @param role the new Role
+     */
     public void setRole(AccountRole role) {
         this.role = role;
     }

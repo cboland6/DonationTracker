@@ -62,7 +62,7 @@ public class ItemSearchScreen extends AppCompatActivity {
         Category cat = (Category) CategorySpinner.getSelectedItem();
         Location loc = (Location) LocationSpinner.getSelectedItem();
         String phrase = nameField.getText().toString();
-        List<Item> items = new ArrayList<Item>();
+        List<Item> items;
         if (loc.getName().equals("Any")) {
             loc = null;
         }

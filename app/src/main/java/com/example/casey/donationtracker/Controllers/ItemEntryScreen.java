@@ -73,27 +73,27 @@ public class ItemEntryScreen extends AppCompatActivity {
         locAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationSpinner.setAdapter(locAdapter);
 
-        ArrayAdapter<Integer> hourAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, hours);
+        ArrayAdapter<Integer> hourAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, hours);
         hourAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         hourSpinner.setAdapter(hourAdapter);
 
-        ArrayAdapter<String> minAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, minutes);
+        ArrayAdapter<String> minAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, minutes);
         minAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         minSpinner.setAdapter(minAdapter);
 
-        ArrayAdapter<String> ampmAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ampm);
+        ArrayAdapter<String> ampmAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, ampm);
         ampmAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         AMPMSpinner.setAdapter(ampmAdapter);
 
-        ArrayAdapter<Integer> monthAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, months);
+        ArrayAdapter<Integer> monthAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, months);
         monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         monthSpinner.setAdapter(monthAdapter);
 
-        ArrayAdapter<Integer> dayAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, days);
+        ArrayAdapter<Integer> dayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, days);
         dayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         daySpinner.setAdapter(dayAdapter);
 
-        ArrayAdapter<Integer> yearAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, years);
+        ArrayAdapter<Integer> yearAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, years);
         yearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         yearSpinner.setAdapter(yearAdapter);
 

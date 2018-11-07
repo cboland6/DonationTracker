@@ -12,13 +12,14 @@ import com.example.casey.donationtracker.R;
 
 
 public class MainActivity extends AppCompatActivity {
+    private final Model model = Model.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Model.getInstance().configureDatabase(getApplicationContext());
+        model.configureDatabase(getApplicationContext());
 
 
         //TODO: store the users/accounts from firebase into _accounts for permanence

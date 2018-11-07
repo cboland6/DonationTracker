@@ -20,18 +20,19 @@ import java.nio.charset.StandardCharsets;
 
 public class HomeScreen extends AppCompatActivity {
     public static String TAG = "MY_APP";
+    private static final Model model = Model.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
         TextView welcomeMessage = findViewById(R.id.textView2);
-        welcomeMessage.setText("Welcome, " + Model.getInstance().getCurrentAccount().getUsername().toString());
+        welcomeMessage.setText("Welcome, " + model.getCurrentAccount().getUsername());
 
         configureLogOutButton();
         configureLocationsButton();
         configureItemSearchButton();
 
-        if (Model.getInstance().getLocationCount() <= 0) {
+        if (model.getLocationCount() <= 0) {
             readSDFile();
         }
 

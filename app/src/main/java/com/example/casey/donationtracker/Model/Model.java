@@ -31,13 +31,12 @@ public class Model {
     // Used for searching so "Any Location" is an option
     public static final Location dummyLocation = new Location("0", "Any", "", "", "", "", "", "", "", "", "");
 
-    AppDatabase db;
+    private static AppDatabase db;
 
     public void configureDatabase(Context context) {
         db = Room.databaseBuilder(context,
                 AppDatabase.class, "database-name")
                 .allowMainThreadQueries()
-                .fallbackToDestructiveMigration()
                 .build();
     }
 

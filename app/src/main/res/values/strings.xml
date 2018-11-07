@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DonationTracker</string>
+    <string name="title_activity_map">Map</string>
+    <string name="log_out">Log Out</string>
+    <string name="view_locations">View Locations</string>
+    <string name="item_search">Item Search</string>
 </resources>

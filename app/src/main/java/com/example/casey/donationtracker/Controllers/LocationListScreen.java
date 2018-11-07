@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.casey.donationtracker.Database.Location;
+import com.example.casey.donationtracker.Controllers.MapActivity;
 import com.example.casey.donationtracker.Model.Model;
 import com.example.casey.donationtracker.R;
 
@@ -31,6 +32,11 @@ public class LocationListScreen extends AppCompatActivity {
         assert recyclerView != null;
         recyclerView.setLayoutManager(llm);
         setupRecyclerView(recyclerView);
+    }
+
+    public void onMapPress(View view) {
+        startActivity(new Intent(LocationListScreen.this, MapActivity.class));
+        finish();
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {

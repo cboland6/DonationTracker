@@ -84,7 +84,7 @@ public class ItemSearchScreen extends AppCompatActivity {
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         Category cat = (Category) CategorySpinner.getSelectedItem();
         Location loc = (Location) LocationSpinner.getSelectedItem();
-        String phrase = (String) nameField.getText().toString();
+        String phrase = nameField.getText().toString();
         List<Item> items = new ArrayList<Item>();
         if (loc.getName().equals("Any")) {
             loc = null;

@@ -3,7 +3,6 @@ package com.example.casey.donationtracker.Model;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.database.sqlite.SQLiteConstraintException;
-import android.util.Log;
 
 import com.example.casey.donationtracker.Database.Account;
 import com.example.casey.donationtracker.Database.AppDatabase;
@@ -36,7 +35,7 @@ public class Model {
     // Used for searching so "Any Location" is an option
     public static final Location dummyLocation = new Location("0", "Any", "", "", "", "", "", "", "", "", "");
 
-    AppDatabase db;
+    private static AppDatabase db;
 
     /**
      * Configure the local database (should be called in the main Activity's onCreate() method)
@@ -46,7 +45,6 @@ public class Model {
         db = Room.databaseBuilder(context,
                 AppDatabase.class, "database-name")
                 .allowMainThreadQueries()
-                .fallbackToDestructiveMigration()
                 .build();
     }
 
@@ -81,10 +79,6 @@ public class Model {
         return _currentAccount;
     }
 
-    public List<Account> getUsers() {
-        return db.userDao().getAll();
-    }
-
     /**
      * Returns a count of the existing locations
      * @return the number of locations in the database
@@ -110,15 +104,9 @@ public class Model {
     }
 
     private boolean validatePassword(Account account, String password) {
-        if (account != null) {
-            return account.getPassword().equals(password);
-        } else {
-            return false;
-        }
+        return account != null && account.getPassword().equals(password);
     }
 
-
-    // Methods involving locations
     /**
      * Adds a location to the database
      * @param loc the new location to add to the database
@@ -133,9 +121,6 @@ public class Model {
      */
     public List<Location> getLocations() { return db.locationDao().getAll(); }
 
-    public Location getCurrentLocation() {
-        return _currentLocation;
-    }
 
     /**
      * Sets the current location field to the input location
@@ -160,10 +145,6 @@ public class Model {
                         int val, Category cat) {
         Item item = new Item(time, itemLoc.getUniqueKey(), shortD, fullD, val, cat);
         db.itemDao().insert(item);
-    }
-
-    public List<Item> getItems() {
-        return db.itemDao().getAll();
     }
 
     /**

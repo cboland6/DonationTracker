@@ -44,12 +44,12 @@ public class Model {
                 .build();
     }
 
-    /** Methods involving accounts */
+    // Methods involving accounts
 
     /**
      * Add an account with the input parameters to the local database.
-     * @param username the username for the new account (must be unique when compared to existing
-     *                 usernames)
+     * @param username the username for the new account (must be unique when compared to an existing
+     *                 username)
      * @param password the password for the new account
      * @param role the new account's role
      * @return true if the account was successfully added to the database. false if the username

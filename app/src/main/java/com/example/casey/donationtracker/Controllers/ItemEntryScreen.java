@@ -17,6 +17,10 @@ import com.example.casey.donationtracker.R;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+/*
+ * This is the ItemEntery class
+ * @author Casey
+ */
 
 public class ItemEntryScreen extends AppCompatActivity {
 
@@ -40,7 +44,7 @@ public class ItemEntryScreen extends AppCompatActivity {
         TextView header = findViewById(R.id.textView6);
         header.setText("Please Enter Item Information Below");
 
-        /**
+        /*
          * Grab the dialog widgets so we can get info for later
          */
         shortDescriptionField = findViewById(R.id.enterBriefDesc);
@@ -64,10 +68,10 @@ public class ItemEntryScreen extends AppCompatActivity {
 
         ArrayList<String> locations = (ArrayList) Model.getInstance().getLocations();
 
-        /**
+        /*
          * Array Adapters for Spinners
+         *use copy of range for Category spinner to exclude the possible ALL category enum value when adding an item
          */
-        // use copy of range for Category spinner to exclude the possible ALL category enum value when adding an item
         ArrayAdapter<Category> catAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Arrays.copyOfRange(Category.values(), 1, Category.values().length));
         catAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(catAdapter);
@@ -102,6 +106,10 @@ public class ItemEntryScreen extends AppCompatActivity {
 
 
     }
+    /*
+     *this is onaddbutton method
+     * @param view is the view
+     */
 
     public void onAddButtonPressed(View view) {
         //required: timestamp, location, value, short description, full description, category
@@ -131,10 +139,19 @@ public class ItemEntryScreen extends AppCompatActivity {
             finish();
         }
     }
+    /*
+     *this  is onCancelPressed  method
+     * @param view is the view
+     */
 
     public void onCancelPressed(View view) {
         finish();
     }
+    /*
+     *this is requiredFieldPresent method
+     * @param cat is the category
+     * @param editTexts is the edited text
+     */
 
     private boolean requiredFieldsPresent(Category cat, EditText ... editTexts) {
         boolean fieldsPresent = true;

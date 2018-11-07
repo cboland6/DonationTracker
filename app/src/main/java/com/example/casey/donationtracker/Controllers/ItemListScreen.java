@@ -41,6 +41,10 @@ public class ItemListScreen extends AppCompatActivity {
 
         private final List<Item> mItems;
 
+        /**
+         * One arg constructor
+         * @param items the list of items to display in the RecyclerView
+         */
         public SimpleItemRecyclerViewAdapter(List<Item> items) {
             mItems = items;
         }

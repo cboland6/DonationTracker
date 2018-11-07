@@ -20,6 +20,11 @@ public class Model {
 
     /** Singleton instance */
     private static final Model _instance = new Model();
+
+    /**
+     * Get the single instance
+     * @return an instance of Model
+     */
     public static Model getInstance() { return _instance; }
 
     // the current user using the app
@@ -105,7 +110,6 @@ public class Model {
     }
 
 
-    /** Methods involving locations */
     /**
      * Adds a location to the database
      * @param loc the new location to add to the database
@@ -129,10 +133,6 @@ public class Model {
         this._currentLocation = loc;
     }
 
-    
-
-
-    /** Methods involving items */
 
     /**
      * Adds a new item to the database

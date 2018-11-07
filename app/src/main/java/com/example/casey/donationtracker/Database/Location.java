@@ -110,7 +110,7 @@ public class Location {
 
     /**
      * Getter for the location's latitude
-     * @return the locaiton's latitude
+     * @return the location's latitude
      */
     public String getLatitude() {
         return latitude;

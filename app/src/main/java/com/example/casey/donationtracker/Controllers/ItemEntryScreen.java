@@ -40,9 +40,8 @@ public class ItemEntryScreen extends AppCompatActivity {
         TextView header = findViewById(R.id.textView6);
         header.setText("Please Enter Item Information Below");
 
-        /**
-         * Grab the dialog widgets so we can get info for later
-         */
+        // Grab the dialog widgets so we can get info for later
+
         shortDescriptionField = findViewById(R.id.enterBriefDesc);
         fullDescriptionField = findViewById(R.id.enterFullDesc);
         valueField = findViewById(R.id.enterValue);
@@ -64,9 +63,7 @@ public class ItemEntryScreen extends AppCompatActivity {
 
         ArrayList<String> locations = (ArrayList) Model.getInstance().getLocations();
 
-        /**
-         * Array Adapters for Spinners
-         */
+        // Array Adapters for Spinners
         // use copy of range for Category spinner to exclude the possible ALL category enum value when adding an item
         ArrayAdapter<Category> catAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Arrays.copyOfRange(Category.values(), 1, Category.values().length));
         catAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -103,6 +100,10 @@ public class ItemEntryScreen extends AppCompatActivity {
 
     }
 
+    /**
+     * Reads the information inputted on the current view and stores the items into their designated location
+     * @param view The view that the add button will get the information from
+     */
     public void onAddButtonPressed(View view) {
         //required: timestamp, location, value, short description, full description, category
         Location loc = (Location) locationSpinner.getSelectedItem();
@@ -132,6 +133,10 @@ public class ItemEntryScreen extends AppCompatActivity {
         }
     }
 
+    /**
+     * When the cancel button is pressed in this current view, the activity will finish
+     * @param view The view that the activity will close
+     */
     public void onCancelPressed(View view) {
         finish();
     }

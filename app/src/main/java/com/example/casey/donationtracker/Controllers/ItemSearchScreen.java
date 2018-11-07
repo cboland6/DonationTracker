@@ -44,9 +44,7 @@ public class ItemSearchScreen extends AppCompatActivity {
         locations.add(0, Model.getInstance().dummyLocation);
         nameField = findViewById(R.id.editText3);
 
-        /**
-         * Array Adapters for Spinners
-         */
+        // Array Adapters for Spinners
         ArrayAdapter<Location> locAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, locations);
         locAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         LocationSpinner.setAdapter(locAdapter);
@@ -57,28 +55,7 @@ public class ItemSearchScreen extends AppCompatActivity {
         CategorySpinner.setAdapter(catAdapter);
 
         configureSearchButton();
-//        LinearLayoutManager llm = new LinearLayoutManager(this);
-//        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-//        assert recyclerView != null;
-////        recyclerView.setLayoutManager(llm);
-////        setupRecyclerView(recyclerView);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     // Begin Printing Items Relevant to Search
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
@@ -111,6 +88,10 @@ public class ItemSearchScreen extends AppCompatActivity {
 
         private final List<Item> mItems;
 
+        /**
+         * Constructor that initializes a SimpleItemRecyclerViewAdapter with items
+         * @param items Array list of items to be set
+         */
         public SimpleItemRecyclerViewAdapter(List<Item> items) {
             mItems = items;
         }
@@ -153,6 +134,10 @@ public class ItemSearchScreen extends AppCompatActivity {
             TextView mCatView;
             LinearLayout parentLayout;
 
+            /**
+             * Constructor that initializes a ViewHolder with view
+             * @param view The view that will be set in ViewHolder
+             */
             public ViewHolder(View view) {
                 super(view);
                 mView = view;

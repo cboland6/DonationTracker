@@ -74,13 +74,6 @@ public class Model {
         return _currentAccount;
     }
 
-    /**
-     * Gets a list of all users in the database
-     * @return the list of all users
-     */
-    public List<Account> getUsers() {
-        return db.userDao().getAll();
-    }
 
     /**
      * Returns a count of the existing locations
@@ -107,11 +100,7 @@ public class Model {
     }
 
     private boolean validatePassword(Account account, String password) {
-        if (account != null) {
-            return account.getPassword().equals(password);
-        } else {
-            return false;
-        }
+        return account != null && account.getPassword().equals(password);
     }
 
 
@@ -130,9 +119,6 @@ public class Model {
      */
     public List<Location> getLocations() { return db.locationDao().getAll(); }
 
-    public Location getCurrentLocation() {
-        return _currentLocation;
-    }
 
     /**
      * Sets the current location field to the input location
@@ -162,13 +148,6 @@ public class Model {
         db.itemDao().insert(item);
     }
 
-    /**
-     * Gets a list of all items
-     * @return list of existing items
-     */
-    public List<Item> getItems() {
-        return db.itemDao().getAll();
-    }
 
     /**
      * Gets all items at the current location

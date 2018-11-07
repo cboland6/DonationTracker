@@ -38,6 +38,16 @@ public class Item {
     @ColumnInfo(name = "comments")
     private String comments;
 
+    /**
+     * constructor for and Item object
+     *
+     * @param timeStamp the time it was donated
+     * @param locationKey where it was donated
+     * @param shortDescription brief word or two
+     * @param fullDescription detailed description
+     * @param value its value
+     * @param category type of donation
+     */
     public Item(LocalDateTime timeStamp, String locationKey, String shortDescription, String fullDescription,
                 int value, Category category) {
 
@@ -49,20 +59,37 @@ public class Item {
         this.category = category;
     }
 
+    /**
+     * getter for timestamp
+     *
+     * @return the item's timestamp
+     */
     @NonNull
     public LocalDateTime getTimeStamp() {
         return timeStamp;
     }
 
+    /**
+     * setter fot timeStamp
+     * @param timeStamp the new timeStamp
+     */
     public void setTimeStamp(@NonNull LocalDateTime timeStamp) {
         this.timeStamp = timeStamp;
     }
 
+    /**
+     * getter for location key
+     * @return the Item's location key
+     */
     @NonNull
     public String getLocationKey() {
         return locationKey;
     }
 
+    /**
+     * setter for location key
+     * @param locationKey
+     */
     public void setLocationKey(@NonNull String locationKey) {
         this.locationKey = locationKey;
     }

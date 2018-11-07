@@ -12,7 +12,7 @@
         android:textColor="#000"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Item Details"
+        android:text="@string/item_details"
         />
 
     <TextView

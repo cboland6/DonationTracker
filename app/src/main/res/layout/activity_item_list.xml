@@ -18,7 +18,7 @@
         android:textColor="#000"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Items"
+        android:text="@string/items"
         />
 
     <android.support.v7.widget.RecyclerView

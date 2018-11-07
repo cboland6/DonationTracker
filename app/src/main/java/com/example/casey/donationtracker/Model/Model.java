@@ -3,6 +3,7 @@ package com.example.casey.donationtracker.Model;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.database.sqlite.SQLiteConstraintException;
+import android.util.Log;
 
 import com.example.casey.donationtracker.Database.Account;
 import com.example.casey.donationtracker.Database.AppDatabase;
@@ -19,6 +20,11 @@ public class Model {
 
     /** Singleton instance */
     private static final Model _instance = new Model();
+
+    /**
+     * Get the single instance
+     * @return an instance of Model
+     */
     public static Model getInstance() { return _instance; }
 
     // the current user using the app
@@ -30,7 +36,7 @@ public class Model {
     // Used for searching so "Any Location" is an option
     public static final Location dummyLocation = new Location("0", "Any", "", "", "", "", "", "", "", "", "");
 
-    private static AppDatabase db;
+    AppDatabase db;
 
     /**
      * Configure the local database (should be called in the main Activity's onCreate() method)
@@ -40,6 +46,7 @@ public class Model {
         db = Room.databaseBuilder(context,
                 AppDatabase.class, "database-name")
                 .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
                 .build();
     }
 
@@ -74,6 +81,9 @@ public class Model {
         return _currentAccount;
     }
 
+    public List<Account> getUsers() {
+        return db.userDao().getAll();
+    }
 
     /**
      * Returns a count of the existing locations
@@ -100,7 +110,11 @@ public class Model {
     }
 
     private boolean validatePassword(Account account, String password) {
-        return account != null && account.getPassword().equals(password);
+        if (account != null) {
+            return account.getPassword().equals(password);
+        } else {
+            return false;
+        }
     }
 
 
@@ -119,6 +133,9 @@ public class Model {
      */
     public List<Location> getLocations() { return db.locationDao().getAll(); }
 
+    public Location getCurrentLocation() {
+        return _currentLocation;
+    }
 
     /**
      * Sets the current location field to the input location
@@ -127,9 +144,6 @@ public class Model {
     public void setCurrentLocation(Location loc) {
         this._currentLocation = loc;
     }
-
-    
-
 
     // Methods involving items
 
@@ -148,6 +162,9 @@ public class Model {
         db.itemDao().insert(item);
     }
 
+    public List<Item> getItems() {
+        return db.itemDao().getAll();
+    }
 
     /**
      * Gets all items at the current location

@@ -27,6 +27,12 @@ public class Account {
         this("_", null, AccountRole.GENERAL);
     }
 
+    /**
+     * Three arg constructor for Account
+     * @param username the username for the new account
+     * @param password the password for the new account
+     * @param role the new account's role
+     */
     public Account(@NonNull String username, String password, AccountRole role) {
         this.username = username;
         this.password = password;

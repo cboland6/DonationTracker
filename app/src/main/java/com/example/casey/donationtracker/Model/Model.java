@@ -3,7 +3,6 @@ package com.example.casey.donationtracker.Model;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.database.sqlite.SQLiteConstraintException;
-import android.util.Log;
 
 import com.example.casey.donationtracker.Database.Account;
 import com.example.casey.donationtracker.Database.AppDatabase;
@@ -109,7 +108,6 @@ public class Model {
         return account != null && account.getPassword().equals(password);
     }
 
-
     /**
      * Adds a location to the database
      * @param loc the new location to add to the database
@@ -132,7 +130,6 @@ public class Model {
     public void setCurrentLocation(Location loc) {
         this._currentLocation = loc;
     }
-
 
     /**
      * Adds a new item to the database

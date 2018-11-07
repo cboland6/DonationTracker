@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.example.casey.donationtracker.Model.AccountRole;
 import com.example.casey.donationtracker.Model.Model;
@@ -45,7 +44,6 @@ public class RegScreen extends AppCompatActivity {
     public void usernameDialog() {
         AlertDialog.Builder userBuilder = new AlertDialog.Builder(RegScreen.this);
         View userView = getLayoutInflater().inflate(R.layout.dialog_user, null);
-        TextView mUserText = userView.findViewById(R.id.userText);
 
         userBuilder.setView(userView);
         userBuilder.create().show();
@@ -57,7 +55,6 @@ public class RegScreen extends AppCompatActivity {
     public void passwordDialog() {
         AlertDialog.Builder passBuilder = new AlertDialog.Builder(RegScreen.this);
         View passView = getLayoutInflater().inflate(R.layout.dialog_pass, null);
-        TextView mPassText = passView.findViewById(R.id.passText);
 
         passBuilder.setView(passView);
         passBuilder.create().show();

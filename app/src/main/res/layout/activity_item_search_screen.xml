@@ -108,5 +108,6 @@
         app:layout_constraintBottom_toTopOf="@+id/scrollView3"
         app:layout_constraintEnd_toStartOf="@+id/EnterSearch"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CategoryForSearch" />
+        app:layout_constraintTop_toBottomOf="@+id/CategoryForSearch"
+        android:autofillHints="" />
 </android.support.constraint.ConstraintLayout>

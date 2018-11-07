@@ -45,6 +45,7 @@ public class ItemListScreen extends AppCompatActivity {
             mItems = items;
         }
 
+        @NonNull
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())

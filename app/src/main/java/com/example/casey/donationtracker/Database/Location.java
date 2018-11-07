@@ -59,7 +59,7 @@ public class Location {
      * @param phone the location's phone number
      * @param website the location's website
      */
-    public Location(String uniqueKey, String name, String latitude, String longitude, String streetAddress,
+    public Location(@NonNull String uniqueKey, String name, String latitude, String longitude, String streetAddress,
                     String city, String state, String zip, String type, String phone, String website) {
         this.uniqueKey = uniqueKey;
         this.name = name;

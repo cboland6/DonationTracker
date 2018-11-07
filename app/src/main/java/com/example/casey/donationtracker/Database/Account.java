@@ -27,7 +27,7 @@ public class Account {
         this("_", null, AccountRole.GENERAL);
     }
 
-    public Account(String username, String password, AccountRole role) {
+    public Account(@NonNull String username, String password, AccountRole role) {
         this.username = username;
         this.password = password;
         this.role = role;

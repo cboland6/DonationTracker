@@ -141,7 +141,7 @@ public class Item {
      * setter for value
      * @param value the new value
      */
-    public void setValue(@NonNull int value) {
+    public void setValue(int value) {
         this.value = value;
     }
 

@@ -52,14 +52,14 @@
         android:layout_height="wrap_content"
         android:text="Log In"
         android:onClick="login"
-        app:layout_constraintBottom_toTopOf="@+id/cancelbutton"
+        app:layout_constraintBottom_toTopOf="@+id/cancelButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText2"
         app:layout_constraintVertical_bias="0.87" />
 
     <Button
-        android:id="@+id/cancelbutton"
+        android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"

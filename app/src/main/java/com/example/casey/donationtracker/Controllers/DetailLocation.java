@@ -45,7 +45,7 @@ public class DetailLocation extends AppCompatActivity {
         TextView locTyp = findViewById(R.id.typeLoc);
         locTyp.setText(loTy);
 
-        TextView longit = findViewById(R.id.longtitude);
+        TextView longit = findViewById(R.id.longitude);
         longit.setText(longi);
 
         TextView latit = findViewById(R.id.latitude);

@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void configureRegButton() {
-        Button regButton = findViewById(R.id.regbutton);
+        Button regButton = findViewById(R.id.regButton);
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -21,27 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
         model.configureDatabase(getApplicationContext());
 
-
-        //TODO: store the users/accounts from firebase into _accounts for permanence
-
-
-         //Attach a listener to read the data at our users reference
-        //this function makes the app crash so far. so i commented it out
-//        myRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                Account acc = dataSnapshot.getValue(Account.class);
-//                Model.getInstance().addAccount(acc);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                Log.d("ERROR", "error getting saved accounts");
-//            }
-//
-//        });
-
-
         configureLoginButton();
         configureRegButton();
 
@@ -52,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // change back to LoginScreen when done testing
                 startActivity(new Intent(MainActivity.this, LoginScreen.class));
-                //change back to LoginScreen when done testing
             }
         });
     }

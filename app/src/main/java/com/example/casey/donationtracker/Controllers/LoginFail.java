@@ -10,14 +10,12 @@ import com.example.casey.donationtracker.R;
 
 public class LoginFail extends AppCompatActivity {
 
-    private Button tryAgain;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_fail);
 
-        tryAgain = findViewById(R.id.tryAgainBtn);
+        Button tryAgain = findViewById(R.id.tryAgainBtn);
 
         tryAgain.setOnClickListener(new View.OnClickListener() {
             @Override

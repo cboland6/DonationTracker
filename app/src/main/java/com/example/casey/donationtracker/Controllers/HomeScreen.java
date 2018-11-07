@@ -71,7 +71,6 @@ public class HomeScreen extends AppCompatActivity {
 
     /**
      * Open the locationdata.csv file from /res/raw directory
-     *
      */
     private void readSDFile() {
         //must clear the locations first
@@ -95,6 +94,4 @@ public class HomeScreen extends AppCompatActivity {
             Log.e(HomeScreen.TAG, "error reading assets", e);
         }
     }
-
-
 }

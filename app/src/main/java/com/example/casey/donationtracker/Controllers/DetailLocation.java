@@ -58,6 +58,10 @@ public class DetailLocation extends AppCompatActivity {
         phone.setText(pho);
     }
 
+    /**
+     * Changes the view from the current view to the ItemListScreen view
+     * @param view The view that will have the locations displayed on
+     */
     public void viewItems(View view) {
         startActivity(new Intent(DetailLocation.this, ItemListScreen.class));
         finish();

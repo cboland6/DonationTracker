@@ -41,11 +41,7 @@ public class ItemListScreen extends AppCompatActivity {
 
         private final List<Item> mItems;
 
-        /**
-         * One arg constructor
-         * @param items the list of items to display in the RecyclerView
-         */
-        public SimpleItemRecyclerViewAdapter(List<Item> items) {
+        private SimpleItemRecyclerViewAdapter(List<Item> items) {
             mItems = items;
         }
 
@@ -81,17 +77,17 @@ public class ItemListScreen extends AppCompatActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            View mView;
+            final View mView;
             Item mItem;
-            TextView mSDescView;
-            TextView mCatView;
-            LinearLayout parentLayout;
+            final TextView mSDescView;
+            final TextView mCatView;
+            final LinearLayout parentLayout;
 
             /**
              * Constructor for the ViewHolder class. Initializes a ViewHolder with view
              * @param view The view that will be set in ViewHolder
              */
-            public ViewHolder(View view) {
+            private ViewHolder(View view) {
                 super(view);
                 mView = view;
                 mSDescView = view.findViewById(R.id.item_shortDesc);

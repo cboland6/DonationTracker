@@ -11,8 +11,8 @@ import com.example.casey.donationtracker.R;
 
 public class DetailLocation extends AppCompatActivity {
 
-    Button itemButton;
-    Button addItemButton;
+    private Button itemButton;
+    private Button addItemButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

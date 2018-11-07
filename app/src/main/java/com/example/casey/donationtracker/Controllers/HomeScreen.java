@@ -19,7 +19,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
 public class HomeScreen extends AppCompatActivity {
-    public static String TAG = "MY_APP";
+    private static final String TAG = "MY_APP";
     private static final Model model = Model.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {

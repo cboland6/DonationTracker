@@ -35,7 +35,7 @@ public class ItemEntryScreen extends AppCompatActivity {
     private Spinner yearSpinner;
     private Spinner locationSpinner;
     private Spinner categorySpinner;
-    public static LocalDateTime itemTime;
+    private static LocalDateTime itemTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

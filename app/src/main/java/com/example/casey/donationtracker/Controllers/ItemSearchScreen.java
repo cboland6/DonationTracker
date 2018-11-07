@@ -69,7 +69,7 @@ public class ItemSearchScreen extends AppCompatActivity {
         if (cat.equals(Category.ALL)) {
             cat = null;
         }
-        if (phrase == "") {
+        if (phrase.equals("")) {
             phrase = null;
         }
         items = Model.getInstance().getMatchingItems(loc, cat, phrase);
@@ -128,11 +128,11 @@ public class ItemSearchScreen extends AppCompatActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            View mView;
+            final View mView;
             Item mItem;
-            TextView mSDescView;
-            TextView mCatView;
-            LinearLayout parentLayout;
+            final TextView mSDescView;
+            final TextView mCatView;
+            final LinearLayout parentLayout;
 
             /**
              * Constructor that initializes a ViewHolder with view

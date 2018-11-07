@@ -13,27 +13,27 @@ public class Item {
 
     @NonNull
     @ColumnInfo(name = "time")
-    private LocalDateTime timeStamp;
+    private final LocalDateTime timeStamp;
 
     @NonNull
     @ColumnInfo(name = "location_key")
-    private String locationKey;
+    private final String locationKey;
 
     @NonNull
     @ColumnInfo(name = "short_description")
-    private String shortDescription;
+    private final String shortDescription;
 
     @NonNull
     @ColumnInfo(name = "full_description")
-    private String fullDescription;
+    private final String fullDescription;
 
     @NonNull
     @ColumnInfo(name = "value")
-    private int value;
+    private final int value;
 
     @NonNull
     @ColumnInfo(name = "category")
-    private Category category;
+    private final Category category;
 
     @ColumnInfo(name = "comments")
     private String comments;
@@ -69,13 +69,6 @@ public class Item {
         return timeStamp;
     }
 
-    /**
-     * setter fot timeStamp
-     * @param timeStamp the new timeStamp
-     */
-    public void setTimeStamp(@NonNull LocalDateTime timeStamp) {
-        this.timeStamp = timeStamp;
-    }
 
     /**
      * getter for location key
@@ -87,14 +80,6 @@ public class Item {
     }
 
     /**
-     * setter for location key
-     * @param locationKey the new location key
-     */
-    public void setLocationKey(@NonNull String locationKey) {
-        this.locationKey = locationKey;
-    }
-
-    /**
      * getter for short description
      * @return the item's short description
      */
@@ -103,13 +88,6 @@ public class Item {
         return shortDescription;
     }
 
-    /**
-     * setter for short description
-     * @param shortDescription the new short description
-     */
-    public void setShortDescription(@NonNull String shortDescription) {
-        this.shortDescription = shortDescription;
-    }
 
     /**
      * getter for full description
@@ -120,13 +98,6 @@ public class Item {
         return fullDescription;
     }
 
-    /**
-     * setter for full description
-     * @param fullDescription the new full description
-     */
-    public void setFullDescription(@NonNull String fullDescription) {
-        this.fullDescription = fullDescription;
-    }
 
     /**
      * getter for value
@@ -137,13 +108,6 @@ public class Item {
         return value;
     }
 
-    /**
-     * setter for value
-     * @param value the new value
-     */
-    public void setValue(@NonNull int value) {
-        this.value = value;
-    }
 
     /**
      * getter for category
@@ -152,14 +116,6 @@ public class Item {
     @NonNull
     public Category getCategory() {
         return category;
-    }
-
-    /**
-     * setter for category
-     * @param category the new category
-     */
-    public void setCategory(@NonNull Category category) {
-        this.category = category;
     }
 
     /**

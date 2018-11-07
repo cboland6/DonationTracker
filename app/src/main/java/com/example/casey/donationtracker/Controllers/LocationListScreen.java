@@ -95,11 +95,11 @@ public class LocationListScreen extends AppCompatActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            View mView;
-            TextView mIdView;
-            TextView mAddress;
+            final View mView;
+            final TextView mIdView;
+            final TextView mAddress;
             Location mItem;
-            LinearLayout parentLayout;
+            final LinearLayout parentLayout;
 
             /**
              * Constructor that initializes ViewHolder with view

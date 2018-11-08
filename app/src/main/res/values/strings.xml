@@ -37,5 +37,6 @@
     <string name="register">Register</string>
     <string name="try_again">Try Again</string>
     <string name="bad_login_attempt">Bad login attempt.</string>
-    <string name="please_try_again">Please try again.</string>
+    <string name="please_try_again">Please Try Again.</string>
+    <string name="enter_item_info">Please Enter Item Information Below</string>
 </resources>

@@ -35,7 +35,6 @@ public class ItemEntryScreen extends AppCompatActivity {
     private Spinner yearSpinner;
     private Spinner locationSpinner;
     private Spinner categorySpinner;
-    private static LocalDateTime itemTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,7 +131,7 @@ public class ItemEntryScreen extends AppCompatActivity {
             int min = Integer.parseInt(minSpinner.getSelectedItem().toString());
 
 
-            itemTime = LocalDateTime.of(year,month,day,hour,min);
+            LocalDateTime itemTime = LocalDateTime.of(year, month, day, hour, min);
 
             Model.getInstance().addItem(itemTime, loc, shortDesc, fullDesc, value, category);
             startActivity(new Intent(ItemEntryScreen.this, LocationListScreen.class));

@@ -14,26 +14,14 @@ public interface ItemDao {
     @Query("SELECT * FROM Item")
     List<Item> getAll();
 
-    @Query("SELECT * FROM Item WHERE location_key = :locationKey")
+    @Query("SELECT * FROM Item WHERE location_key LIKE :locationKey")
     List<Item> getItemsAtLocation(String locationKey);
 
-    @Query("SELECT * FROM Item WHERE location_key = :locationKey AND category = :category")
-    List<Item> getItemsAtLocation(String locationKey, Category category);
-
-    @Query("SELECT * FROM Item WHERE location_key = :locationKey AND (short_description LIKE '%' || :phrase || '%' OR full_description LIKE '%' || :phrase || '%')")
+    @Query("SELECT * FROM Item WHERE location_key LIKE :locationKey AND (short_description LIKE :phrase OR full_description LIKE :phrase)")
     List<Item> getItemsAtLocation(String locationKey, String phrase);
 
-    @Query("SELECT * FROM Item WHERE location_key = :locationKey AND category = :category AND (short_description LIKE '%' || :phrase || '%' OR full_description LIKE '%' || :phrase || '%')")
+    @Query("SELECT * FROM Item WHERE location_key LIKE :locationKey AND category = :category AND (short_description LIKE :phrase OR full_description LIKE :phrase)")
     List<Item> getItemsAtLocation(String locationKey, Category category, String phrase);
-
-    @Query("SELECT * FROM Item WHERE category = :category")
-    List<Item> getItemsWithCategory(Category category);
-
-    @Query("SELECT * FROM Item WHERE category = :category AND (short_description LIKE '%' || :phrase || '%' OR full_description LIKE '%' || :phrase || '%')")
-    List<Item> getItemsWithCategory(Category category, String phrase);
-
-    @Query("SELECT * FROM Item WHERE short_description LIKE '%' || :phrase || '%' OR full_description LIKE '%' || :phrase || '%'")
-    List<Item> getItemsWithPhrase(String phrase);
 
     @Insert
     void insertAll(Item ... items);

@@ -167,22 +167,25 @@ public class Model {
     public List<Item> getMatchingItems(Location loc, Category cat, String phrase) {
         // Will return items matching the parameters
         ItemDao itemDao = db.itemDao();
-        List<Item> results = new ArrayList<>();
-        if (loc != null && cat != null && phrase != null) {
-            results = itemDao.getItemsAtLocation(loc.getUniqueKey(), cat, phrase);
-        } else if (loc != null && cat != null) {
-            results = itemDao.getItemsAtLocation(loc.getUniqueKey(), cat);
-        } else if (loc != null && phrase != null) {
-            results = itemDao.getItemsAtLocation(loc.getUniqueKey(), phrase);
-        } else if (loc != null) {
-            results = itemDao.getItemsAtLocation(loc.getUniqueKey());
-        } else if (cat != null && phrase != null) {
-            results = itemDao.getItemsWithCategory(cat, phrase);
-        } else if (cat != null) {
-            results = itemDao.getItemsWithCategory(cat);
-        } else if (phrase != null) {
-            results = itemDao.getItemsWithPhrase(phrase);
+        String locationString;
+        String phraseString;
+
+        if (loc == null) {
+            locationString = "%";
+        } else {
+            locationString = loc.getUniqueKey();
         }
-        return results;
+
+        if (phrase == null) {
+            phraseString = "%";
+        } else {
+            phraseString = "%" + phrase + "%";
+        }
+
+        if (cat == null) {
+            return itemDao.getItemsAtLocation(locationString, phraseString);
+        } else {
+            return itemDao.getItemsAtLocation(locationString, cat, phraseString);
+        }
     }
 }

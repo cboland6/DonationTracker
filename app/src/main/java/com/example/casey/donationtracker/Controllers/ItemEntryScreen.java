@@ -17,6 +17,10 @@ import com.example.casey.donationtracker.R;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+/*
+ * This is the ItemEntery class
+ * @author Casey
+ */
 
 public class ItemEntryScreen extends AppCompatActivity {
 
@@ -31,7 +35,6 @@ public class ItemEntryScreen extends AppCompatActivity {
     private Spinner yearSpinner;
     private Spinner locationSpinner;
     private Spinner categorySpinner;
-    public static LocalDateTime itemTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +42,7 @@ public class ItemEntryScreen extends AppCompatActivity {
         setContentView(R.layout.activity_item_entry_screen);
         TextView header = findViewById(R.id.textView6);
         header.setText("Please Enter Item Information Below");
-
         // Grab the dialog widgets so we can get info for later
-
         shortDescriptionField = findViewById(R.id.enterBriefDesc);
         fullDescriptionField = findViewById(R.id.enterFullDesc);
         valueField = findViewById(R.id.enterValue);
@@ -62,9 +63,10 @@ public class ItemEntryScreen extends AppCompatActivity {
         Integer[] years = new Integer[] {2015,2016,2017,2018,2019,2020};
 
         ArrayList<String> locations = (ArrayList) Model.getInstance().getLocations();
-
-        // Array Adapters for Spinners
-        // use copy of range for Category spinner to exclude the possible ALL category enum value when adding an item
+        /*
+         * Array Adapters for Spinners
+         *use copy of range for Category spinner to exclude the possible ALL category enum value when adding an item
+         */
         ArrayAdapter<Category> catAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Arrays.copyOfRange(Category.values(), 1, Category.values().length));
         catAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(catAdapter);
@@ -99,6 +101,10 @@ public class ItemEntryScreen extends AppCompatActivity {
 
 
     }
+    /*
+     *this is onaddbutton method
+     * @param view is the view
+     */
 
     /**
      * Reads the information inputted on the current view and stores the items into their designated location
@@ -125,13 +131,17 @@ public class ItemEntryScreen extends AppCompatActivity {
             int min = Integer.parseInt(minSpinner.getSelectedItem().toString());
 
 
-            itemTime = LocalDateTime.of(year,month,day,hour,min);
+            LocalDateTime itemTime = LocalDateTime.of(year, month, day, hour, min);
 
             Model.getInstance().addItem(itemTime, loc, shortDesc, fullDesc, value, category);
             startActivity(new Intent(ItemEntryScreen.this, LocationListScreen.class));
             finish();
         }
     }
+    /*
+     *this  is onCancelPressed  method
+     * @param view is the view
+     */
 
     /**
      * When the cancel button is pressed in this current view, the activity will finish
@@ -140,6 +150,11 @@ public class ItemEntryScreen extends AppCompatActivity {
     public void onCancelPressed(View view) {
         finish();
     }
+    /*
+     *this is requiredFieldPresent method
+     * @param cat is the category
+     * @param editTexts is the edited text
+     */
 
     private boolean requiredFieldsPresent(Category cat, EditText ... editTexts) {
         boolean fieldsPresent = true;

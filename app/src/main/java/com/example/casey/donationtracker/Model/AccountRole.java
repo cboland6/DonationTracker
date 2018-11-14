@@ -1,15 +1,15 @@
 package com.example.casey.donationtracker.Model;
 
 public enum AccountRole {
-    ADMIN("admin", true), GENERAL("general", false), MANAGER("manager", true), LOCATION_EMPLOYEE("location employee", true);
+    ADMIN("admin"), GENERAL("general"), MANAGER("manager"), LOCATION_EMPLOYEE("location employee");
 
     private final String _accountRole;
-    private final boolean _canEditInventory;
+    //private final boolean _canEditInventory;
 
-    AccountRole(String accountRole, boolean canEditInventory) {
+    AccountRole(String accountRole) {
 
         _accountRole = accountRole;
-        _canEditInventory = canEditInventory;
+        //_canEditInventory = canEditInventory;
     }
 
     public String toString() {

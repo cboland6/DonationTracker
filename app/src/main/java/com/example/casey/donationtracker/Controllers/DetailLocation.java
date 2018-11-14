@@ -11,16 +11,13 @@ import com.example.casey.donationtracker.R;
 
 public class DetailLocation extends AppCompatActivity {
 
-    Button itemButton;
-    Button addItemButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_location);
-        itemButton = findViewById(R.id.viewItemsButton);
+        Button itemButton = findViewById(R.id.viewItemsButton);
         configureAddItemButton();
-        addItemButton = findViewById(R.id.ItemEntry);
+        Button addItemButton = findViewById(R.id.ItemEntry);
         getIncomingIntent();
     }
 
